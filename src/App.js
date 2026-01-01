@@ -1,5 +1,6 @@
 import './App.css';
 import NavBar from "./components/modules/NavBar.js";
+import TopBar from "./components/modules/TopBar.js"
 
 
 
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <TopBar />
         <NavBar />
         <div className="App-container">
           <Routes>

@@ -1,0 +1,17 @@
+.TopBar-container {
+  background-color: rgb(121, 212, 121);
+  padding: 10px;
+}
+
+.Button {
+  color: green;
+  border-color: red;
+  margin-left: auto;
+}
+
+/* Flex container για τα κουμπιά */
+.button-group {
+  display: flex;       /* κουμπιά δίπλα-δίπλα */
+  gap: 10px;           /* απόσταση μεταξύ κουμπιών */
+  margin-left: auto;    /* σπρώχνει όλα δεξιά */
+}
