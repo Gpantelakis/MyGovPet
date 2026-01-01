@@ -1,0 +1,111 @@
+.home-container {
+  font-family: Arial, sans-serif;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding-top: 56px;
+  background-size:cover;
+  background-position: right center;
+  display: flex;
+  align-items: center;
+  padding: 70px;
+  color: white;
+  background-image: url("../../../public/Home.jpg");
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+
+.card-owner{
+  background: white;
+  color: #4a8f4a;
+  width: 180px;
+  text-align: center;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  
+}
+
+.card-owner img{
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.card-vet{
+  background: white;
+  color: #4a8f4a;
+  width: 180px;
+  text-align: center;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-vet img{
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.card-citizen{
+  background: white;
+  color: #4a8f4a;
+  width: 180px;
+  text-align: center;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-citizen img{
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+.footer {
+  background: #8fbf8f;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+  color: #1f3d1f;
+}
+
+.social .icons span {
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact p {
+  margin: 5px 0;
+}

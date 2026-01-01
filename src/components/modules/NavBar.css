@@ -1,0 +1,9 @@
+.NavBar-container{
+    padding: var(--s) var(--m);
+    background-color: var(--green) ;
+}
+
+.NavBar-title{
+    color: var(--blue); 
+    font-size: 20px;
+}
