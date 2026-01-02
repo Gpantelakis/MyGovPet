@@ -1,5 +1,5 @@
 .TopBar-container {
-  background-color: rgb(121, 212, 121);
+  background-color: var(--light-green);
   padding: 10px;
 }
 
@@ -14,4 +14,21 @@
   display: flex;       /* κουμπιά δίπλα-δίπλα */
   gap: 10px;           /* απόσταση μεταξύ κουμπιών */
   margin-left: auto;    /* σπρώχνει όλα δεξιά */
+}
+
+.dropdown-wrapper {
+  display: flex;
+}
+
+.smooth-dropdown .dropdown-menu {
+  opacity: 0;
+  transform: translateY(10px);
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.smooth-dropdown.show .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }

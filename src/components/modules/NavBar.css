@@ -1,9 +1,24 @@
-.NavBar-container{
-    padding: var(--s) var(--m);
-    background-color: var(--green) ;
+.NavBar-container {
+height: 40px;
+  min-height: 50px;         
+  background-color: var(--green);
 }
 
 .NavBar-title{
     color: var(--blue); 
     font-size: 20px;
+}
+
+.logo {
+  height: 40px;           
+  width: auto;
+  object-fit: contain;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateX(-70px); 
 }
