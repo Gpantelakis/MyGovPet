@@ -20,46 +20,36 @@ function NavBar() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="mx-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
+            className="mx-auto my-2 my-lg-0 nav center"
+            style={{ maxHeight: 'none' }}
             navbarScroll
           >
             <NavDropdown title="Ιδιοκτήτες Κατοικιδίων" id="navbarScrollingDropdown-PetOwn">
                 
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#petinfo">Στοιχεία κατοικιδίου</NavDropdown.Item>
+              <NavDropdown.Item href="#pet_loss">Δήλωση απώλειας κατοικιδίου</NavDropdown.Item>
+              <NavDropdown.Item href="#pet_find">Δήλωση εύρεσης κατοικιδίου</NavDropdown.Item>
+              <NavDropdown.Item href="#appoitmnet_po">Ραντεβού με κτηνίατρο</NavDropdown.Item>
+              <NavDropdown.Item href="#rate_vet">Αναζήτηση και Αξιολόγηση Κτηνιάτρου</NavDropdown.Item>
+              <NavDropdown.Item href="#cancelAp">Ακύρωση Ραντεβού με κτηνίατρο</NavDropdown.Item>
+              <NavDropdown.Item href="#HistoryAp">Ιστορικό των Ραντεβού</NavDropdown.Item>
+
             </NavDropdown>
 
             <NavDropdown title="Κτηνίατρος" id="navbarScrollingDropdown-Vet">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#cr_Prof">Δημιουργία Προφίλ</NavDropdown.Item>
+              <NavDropdown.Item href="#pet_check">Καταγραφή ταυτότητας και συμβάντων κατοικιδίου</NavDropdown.Item>
+              <NavDropdown.Item href="#med_action">Καταγραφή Ιατρικών Πράξεων</NavDropdown.Item>
+              <NavDropdown.Item href="#History_med">Ιστορικό Επισκέψεων και Ιατρικών Πράξεων</NavDropdown.Item>
+              <NavDropdown.Item href="#Avail_set">Ρυθμίστε τις διαθεσιμότητά σας</NavDropdown.Item>
+              <NavDropdown.Item href="#Check_ap">Δείτε τα ραντεβού σας</NavDropdown.Item>
+              <NavDropdown.Item href="#History_rate">Ιστορικό Αξιολογήσεων</NavDropdown.Item>
             </NavDropdown>
 
             <NavDropdown title="Πολίτες" id="navbarScrollingDropdown-Citizen">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#lost_pet_plat">Πλατφόρμα απολεσθέντων κατοικιδίων</NavDropdown.Item>
+              <NavDropdown.Item href="#find_pet_ci">Εύρεση κατοικιδίου</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -1,0 +1,30 @@
+.step2-container {
+  padding: 40px;
+}
+
+.form-box {
+  background: #e5e5e5;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.step-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.step-indicator {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.step-indicator span {
+  opacity: 0.5;
+}
+
+.step-indicator .active {
+  font-weight: bold;
+  opacity: 1;
+}

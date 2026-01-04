@@ -1,16 +1,23 @@
 .NavBar-container {
 height: 40px;
-  min-height: 50px;         
+  min-height: 55px;         
   background-color: var(--green);
 }
 
-.NavBar-title{
-    color: var(--blue); 
-    font-size: 20px;
+@media (max-width: 992px){
+  .NavBar-container .navbar-collapse {
+    background-color: var(--light-green); /* λευκό ημιδιαφανές φόντο */
+    padding: 1rem;
+    position: absolute; /* ώστε να εμφανίζεται πάνω από το hero */
+    top: 100%; /* ακριβώς κάτω από τη navbar */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* να είναι πάνω από όλα τα υπόλοιπα στοιχεία */
+  }
 }
 
 .logo {
-  height: 40px;           
+  height: 30px;           
   width: auto;
   object-fit: contain;
   margin-right: 10px;
@@ -18,7 +25,10 @@ height: 40px;
 }
 
 .mx-auto {
-  margin-left: auto;
+  margin-left: 20px;
   margin-right: auto;
-  transform: translateX(-70px); 
+}
+
+.NavBar-container .dropdown-menu{
+  background-color: var(--light-green);
 }

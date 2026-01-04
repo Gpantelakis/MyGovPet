@@ -4,15 +4,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import './TopBar.css'
 import { useState } from 'react';
 import Login from '../pages/Login';
+import { useNavigate } from 'react-router-dom';
 
-function TopBar() {
+const TopBar =() => {
   const [showLogin, setShowLogin] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
     <Navbar expand="lg" className="TopBar-container">
       <Container fluid>
         <div className='button-group'>
-            <Button variant="outline-success" className='Button'>Εγγραφή</Button>
+            <Button
+              variant="outline-success"
+              className='Button'
+              onClick={() => navigate("/register")}   
+            >
+              Εγγραφή
+            </Button>
             <Button
               variant="outline-success"
               className="Button"
