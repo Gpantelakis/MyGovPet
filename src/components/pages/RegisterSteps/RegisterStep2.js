@@ -1,7 +1,7 @@
 import { Form, Button, Row, Col } from "react-bootstrap";
 import "./RegisterStep2.css";
 
-function RegisterStep2({ formData, setFormData, onBack, onNext }) {
+const RegisterStep2=({ formData, setFormData, onBack, onNext })=> {
 
   const handleChange = (e) => {
     setFormData({
@@ -13,14 +13,12 @@ function RegisterStep2({ formData, setFormData, onBack, onNext }) {
   return (
     <div className="step2-container">
 
-      {/* Step Indicator */}
       <div className="step-indicator">
         <span>Βήμα 1-Επιλογή Ρόλου</span>
         <span className="active">Βήμα 2-Δήλωση Στοιχείων</span>
         <span>Βήμα 3-Επιβεβαίωση & Ολοκλήρωση</span>
       </div>
 
-      {/* Form */}
       <Form className="form-box">
 
         <Row>
@@ -70,8 +68,8 @@ function RegisterStep2({ formData, setFormData, onBack, onNext }) {
               onChange={handleChange}
             >
               <option value="">Επιλογή</option>
-              <option value="male">Άνδρας</option>
-              <option value="female">Γυναίκα</option>
+              <option value="Άνδρας">Άνδρας</option>
+              <option value="Γυναίκα">Γυναίκα</option>
             </Form.Select>
           </Col>
 

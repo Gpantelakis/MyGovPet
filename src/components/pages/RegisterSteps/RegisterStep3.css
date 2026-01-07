@@ -1,0 +1,49 @@
+.Confirm-Page {
+  padding: 40px;
+}
+
+.confirmation-box {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: var(--grey);
+  border-radius: 10px;
+}
+
+.confirm-box p {
+  margin-bottom: 10px;
+}
+
+.step-indicator {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.step-indicator span {
+  opacity: 0.5;
+}
+
+.step-indicator .active {
+  font-weight: bold;
+  opacity: 1;
+}
+
+.step-buttons {
+  display: flex;             /* ενεργοποιεί flexbox */
+  justify-content:center; 
+  gap: 600px;
+  margin-top: 20px;          /* προαιρετικό κενό από πάνω */
+}
+
+
+
+
+@media (max-width: 992px){
+    .step-buttons {
+    display: flex;             /* ενεργοποιεί flexbox */
+    justify-content:center; 
+    gap: 400px;
+    margin-top: 20px;          /* προαιρετικό κενό από πάνω */
+    }
+}

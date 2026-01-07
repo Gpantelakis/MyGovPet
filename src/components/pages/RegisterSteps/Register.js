@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import RegisterStep1 from "../RegisterSteps/RegisterStep1";
 import RegisterStep2 from "../RegisterSteps/RegisterStep2";
+import RegisterStep3 from "../RegisterSteps/RegisterStep3";
+import RegisterStep4 from "../RegisterSteps/RegisterStep4";
 
 function Register() {
   const [Registerstep, setRegisterStep] = useState(1);
@@ -16,8 +19,41 @@ function Register() {
   street: "",
   streetNumber: "",
   postalCode: "",
-  email: ""
+  email: "",
+  password:""
 });
+
+function handleConfirm (submitData) {
+  fetch(`http://localhost:3001/users?email=${submitData.email}`)
+    .then(res => res.json())
+    .then(users => {
+      if (users.length > 0) {
+        alert("Το email χρησιμοποιείται ήδη");
+        return;
+      }
+
+      // Αν ΔΕΝ υπάρχει email → αποθήκευση
+      return fetch("http://localhost:3001/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submitData)
+      });
+    })
+    .then(res => {
+      if (!res) return;
+      return res.json();
+    })
+    .then(newUser => {
+      if (!newUser) return;
+      alert("Η εγγραφή ολοκληρώθηκε!");
+      localStorage.setItem("userId", submitData.id);
+      console.log("Νέος χρήστης:", newUser);
+    })
+    .catch(err => {
+      console.error(err);
+      alert(err);
+    });
+};
 
   return (
     <>
@@ -35,8 +71,26 @@ function Register() {
             setFormData={setFormData}
             onBack={() => setRegisterStep(1)}
             onNext={() => setRegisterStep(3)}
-  />
-)}
+          />
+      )}
+      {Registerstep === 3 && (
+        <RegisterStep3
+        formData={formData}
+        onBack={() => setRegisterStep(2)}
+        onNext={() => setRegisterStep(4)}
+     />
+      )}
+      {Registerstep === 4 && (
+        <RegisterStep4
+        formData={formData}
+        setFormData={setFormData}
+        
+        onBack={() => setRegisterStep(3)}
+        handleConfirm={handleConfirm}
+     />
+      )}
+
+      
     </>
   );
 }

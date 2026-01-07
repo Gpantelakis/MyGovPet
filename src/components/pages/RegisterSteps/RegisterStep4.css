@@ -1,0 +1,75 @@
+
+
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+ .modal-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+
+/* ===== Body ===== */
+ .modal-body {
+    padding: 1.5rem 2rem;
+}
+
+/* ===== Labels ===== */
+ .form-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* ===== Inputs ===== */
+ .form-control {
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ced4da;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+ .form-control:focus {
+  border-color: #198754; /* bootstrap success */
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+/* ===== Submit button ===== */
+ .btn {
+  margin-top: 0rem;
+  padding: 0.6rem;
+  border-radius: 20px;
+  background-color: var(--green);
+  
+}
+
+/* ===== Smooth animation ===== */
+.modal.fade .modal-dialog {
+  transform: translateY(-20px);
+  transition: transform 0.25s ease-out;
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 576px) {
+   .modal-body {
+    padding: 1.2rem;
+  }
+}
+
+.GroupButtons{
+    display: flex;
+    gap: 10px;
+}
+
+.password-hint {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 4px;
+}
+

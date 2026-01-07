@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "ce7a",
+      "firstName": "GEORGIOS",
+      "lastName": "PANTELAKIS",
+      "phone": "6973453310",
+      "afm": "",
+      "gender": "Άνδρας",
+      "studies": "",
+      "street": "Βασιλείου Βουλγαροκτόνου",
+      "streetNumber": "12",
+      "postalCode": "15343",
+      "email": "giorgos.chania@hotmail.com",
+      "password": "Giorgos2001!"
+    }
+  ]
+}
