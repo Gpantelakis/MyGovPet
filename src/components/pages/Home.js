@@ -4,15 +4,11 @@ import "./Home.css";
 
 
 
-const gotoPOMenu=()=>{
-   
-}
-
 const Home = () => {
 
   const navigate = useNavigate();
   const goToPage = () => {
-    navigate("../pages/PetOwner/PetOwnerMenu"); // το route που θέλεις
+    navigate("/PetOwnerMenu"); // το route που θέλεις
   };
 
   return (
@@ -32,7 +28,7 @@ const Home = () => {
         <div className="u-flex">
             <div className="cards">
                 <div className="card-owner">
-                    <img src="/pet-owner.jpg" alt="pet-owner" onClick={goToPage}/>
+                    <img src="/pet-owner.jpg" alt="pet-owner"  onClick={() => navigate("/PetOwnerMenu")}/>
                 <p>Είσαι ιδιοκτήτης κατοικιδίου;</p>
                 </div>
 

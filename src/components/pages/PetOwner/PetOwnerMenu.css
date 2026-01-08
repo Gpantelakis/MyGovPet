@@ -1,7 +1,14 @@
-.service-card {
+.pageBackGround{
+  background-color: var(--white);
+  /*{background-image: url("../../../../public/Home.jpg")*/
+}
+
+.pageBackGround .service-card {
   border: 1px solid #ccc;
   border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
+  background-color: var(--darkgrey);
+  height: 100px;
 }
 
 .service-card:hover {
@@ -9,11 +16,17 @@
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-footer a {
-  color: #333;
-  text-decoration: none;
+.footerPO {
+  width: 100%;
+  background-color: var(--darkgrey);
+  color: VAR(--black);
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  text-align: center;      
+  display: flex;
+  flex-direction: column;  
 }
 
-footer a:hover {
-  color: #28a745;
-}
+
+
+

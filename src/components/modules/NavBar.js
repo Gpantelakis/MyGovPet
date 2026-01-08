@@ -3,9 +3,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './NavBar.css'
+import {useNavigate}  from "react-router-dom";
+
 
 function NavBar() {
-
+  const navigate = useNavigate();
 
   return (
     <Navbar expand="lg" className="NavBar-container">
@@ -15,6 +17,7 @@ function NavBar() {
             src="/gov.svg"
             alt="Logo"
             className="logo" 
+            onClick={() => navigate("/Home")}
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

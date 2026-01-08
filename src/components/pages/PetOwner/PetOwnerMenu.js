@@ -1,5 +1,5 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
-import './PetOwnerServices.css';
+import './PetOwnerMenu.css';
 
 const services = [
   { id: 1, title: "Στοιχεία και βιβλιάριο υγείας κατοικιδίου", steps: "2 βήματα για να δεις τα στοιχεία βιβλιαρίου" },
@@ -14,41 +14,32 @@ const services = [
 
 function PetOwnerServices() {
   return (
-    <Container className="my-5">
-      <h2 className="mb-4 text-center">Υπηρεσίες Ιδιοκτήτη Κατοικιδίου</h2>
-      <Row xs={1} md={2} lg={4} className="g-3">
-        {services.map(service => (
-          <Col key={service.id}>
-            <Card className="h-100 text-center p-3 service-card">
-              <Card.Body>
-                <Card.Title>{service.id}. {service.title}</Card.Title>
-                <Card.Text>{service.steps}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+    <div className="pageBackGround">
+      <h2 className=" text-center">Υπηρεσίες Ιδιοκτήτη Κατοικιδίου</h2>
+      <Container>
+        <Row xs={1} md={2} lg={4} className="g-3">
+          {services.map(service => (
+            <Col key={service.id}>
+              <Card className="h-100 text-center p-3 service-card">
+                <Card.Body>
+                  <Card.Title>{service.id}. {service.title}</Card.Title>
+                  <Card.Text>{service.steps}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+        {/* Footer */}
+        <footer className="footerPO">
+            <p>Επικοινωνία & Προσβασιμότητα</p>
+            <p>Υπουργείο Ψηφιακής Διακυβέρνησης Αθήνας 1, Αθήνα</p>
+            <p>Τηλέφωνο επικοινωνίας 210 111 1111</p>
+            <p>Ώρες επικοινωνίας 9:00-15:00 Δευτέρα-Παρασκευή</p>
+        </footer>
+        
 
-      {/* Footer */}
-      <footer className="bg-light mt-5 p-4 text-center">
-        <div className="mb-3">
-          <a href="#"><i className="fab fa-facebook fa-lg mx-2"></i></a>
-          <a href="#"><i className="fab fa-instagram fa-lg mx-2"></i></a>
-          <a href="#"><i className="fab fa-twitter fa-lg mx-2"></i></a>
-          <a href="#"><i className="fab fa-tiktok fa-lg mx-2"></i></a>
-          <a href="#"><i className="fab fa-youtube fa-lg mx-2"></i></a>
-          <a href="#"><i className="fab fa-telegram fa-lg mx-2"></i></a>
-          <a href="#"><i className="fab fa-whatsapp fa-lg mx-2"></i></a>
-          <a href="#"><i className="fab fa-linkedin fa-lg mx-2"></i></a>
-        </div>
-        <div>
-          <p>Επικοινωνία & Προσβασιμότητα</p>
-          <p>Υπουργείο Ψηφιακής Διακυβέρνησης Αθήνας 1, Αθήνα</p>
-          <p>Τηλέφωνο επικοινωνίας 210 111 1111</p>
-          <p>Ώρες επικοινωνίας 9:00-15:00 Δευτέρα-Παρασκευή</p>
-        </div>
-      </footer>
-    </Container>
+    </div>
   );
 }
 
