@@ -1,11 +1,12 @@
 {
   "users": [
     {
-      "id": "ce7a",
+      "id": "55d8",
+      "role": 1,
       "firstName": "GEORGIOS",
       "lastName": "PANTELAKIS",
       "phone": "6973453310",
-      "afm": "",
+      "afm": "765432",
       "gender": "Άνδρας",
       "studies": "",
       "street": "Βασιλείου Βουλγαροκτόνου",

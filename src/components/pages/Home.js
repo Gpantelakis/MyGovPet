@@ -1,8 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 
+
+const gotoPOMenu=()=>{
+   
+}
+
 const Home = () => {
+
+  const navigate = useNavigate();
+  const goToPage = () => {
+    navigate("../pages/PetOwner/PetOwnerMenu"); // το route που θέλεις
+  };
+
   return (
     <div className="home-container">
       {/* HERO SECTION */}
@@ -20,7 +32,7 @@ const Home = () => {
         <div className="u-flex">
             <div className="cards">
                 <div className="card-owner">
-                    <img src="/pet-owner.jpg" alt="pet-owner"/>
+                    <img src="/pet-owner.jpg" alt="pet-owner" onClick={goToPage}/>
                 <p>Είσαι ιδιοκτήτης κατοικιδίου;</p>
                 </div>
 

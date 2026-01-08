@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import RegisterStep1 from "../RegisterSteps/RegisterStep1";
 import RegisterStep2 from "../RegisterSteps/RegisterStep2";
 import RegisterStep3 from "../RegisterSteps/RegisterStep3";
@@ -8,8 +8,10 @@ import RegisterStep4 from "../RegisterSteps/RegisterStep4";
 function Register() {
   const [Registerstep, setRegisterStep] = useState(1);
   const [role, setRole] = useState("");
+  const navigate=useNavigate();
 
   const [formData, setFormData] = useState({
+  role:"",
   firstName: "",
   lastName: "",
   phone: "",
@@ -46,8 +48,10 @@ function handleConfirm (submitData) {
     .then(newUser => {
       if (!newUser) return;
       alert("Η εγγραφή ολοκληρώθηκε!");
-      localStorage.setItem("userId", submitData.id);
+      localStorage.setItem("userId", newUser.id);
       console.log("Νέος χρήστης:", newUser);
+      window.location.href = "/Home";
+
     })
     .catch(err => {
       console.error(err);
@@ -61,6 +65,7 @@ function handleConfirm (submitData) {
         <RegisterStep1
           role={role}
           setRole={setRole}
+          setFormData={setFormData}
           onNext={() => setRegisterStep(2)}
         />
       )}
