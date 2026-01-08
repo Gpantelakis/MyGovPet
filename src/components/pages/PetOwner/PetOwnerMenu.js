@@ -1,4 +1,5 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom"; // για navigation
 import './PetOwnerMenu.css';
 
 const services = [
@@ -12,15 +13,26 @@ const services = [
   { id: 8, title: "Ιστορικό των Ραντεβού με Κτηνίατρο", steps: "1 βήμα για να δεις όλα τα ραντεβού σου με τον κτηνίατρο" },
 ];
 
-function PetOwnerServices() {
+function PetOwnerMenu() {
+  const navigate = useNavigate();
+
+  const goToService = (serviceId) => {
+    // Δημιουργούμε URL δυναμικά: /petownermenu/service{id}
+    navigate(`/PetOwnerMenu/service${serviceId}`);
+  };
+
   return (
     <div className="pageBackGround">
-      <h2 className=" text-center">Υπηρεσίες Ιδιοκτήτη Κατοικιδίου</h2>
+      <h2 className="text-center">Υπηρεσίες Ιδιοκτήτη Κατοικιδίου</h2>
       <Container>
-        <Row xs={1} md={2} lg={4} className="g-3">
+        <Row xs={1} md={2} lg={4} className="g-3"> {/*xs για κινητα md για tablet lg για ολοκληρη οθόνη g-3  απόσταση*/}
           {services.map(service => (
             <Col key={service.id}>
-              <Card className="h-100 text-center p-3 service-card">
+              <Card
+                className="h-100 text-center p-3 service-card"
+                style={{ cursor: "pointer" }}   
+                onClick={() => goToService(service.id)} 
+              >
                 <Card.Body>
                   <Card.Title>{service.id}. {service.title}</Card.Title>
                   <Card.Text>{service.steps}</Card.Text>
@@ -30,17 +42,16 @@ function PetOwnerServices() {
           ))}
         </Row>
       </Container>
-        {/* Footer */}
-        <footer className="footerPO">
-            <p>Επικοινωνία & Προσβασιμότητα</p>
-            <p>Υπουργείο Ψηφιακής Διακυβέρνησης Αθήνας 1, Αθήνα</p>
-            <p>Τηλέφωνο επικοινωνίας 210 111 1111</p>
-            <p>Ώρες επικοινωνίας 9:00-15:00 Δευτέρα-Παρασκευή</p>
-        </footer>
-        
 
+      {/* Footer */}
+      <footer className="footerPO">
+        <p>Επικοινωνία & Προσβασιμότητα</p>
+        <p>Υπουργείο Ψηφιακής Διακυβέρνησης Αθήνας 1, Αθήνα</p>
+        <p>Τηλέφωνο επικοινωνίας 210 111 1111</p>
+        <p>Ώρες επικοινωνίας 9:00-15:00 Δευτέρα-Παρασκευή</p>
+      </footer>
     </div>
   );
 }
 
-export default PetOwnerServices;
+export default PetOwnerMenu;
