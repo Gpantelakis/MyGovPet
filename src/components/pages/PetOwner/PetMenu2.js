@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { Form, Row, Col } from "react-bootstrap";
 import './PetMenu1.css'
 
-function PetMenu1({userId},onNext) {
+function PetMenu2({userId},onNext) {
   const [user, setUser] = useState(null);
   const [chipNumber, setChipNumber] = useState("");
   const [pet, setPet] = useState([]);
@@ -53,7 +53,6 @@ function PetMenu1({userId},onNext) {
   
 
  return (
-  <>
   <div style={{ padding: "2rem" }}>
     
 
@@ -137,7 +136,6 @@ function PetMenu1({userId},onNext) {
             ΕΠΟΜΕΝΟ
           </Button>
         </div>
-        
       </div>
     )}
 
@@ -188,17 +186,8 @@ function PetMenu1({userId},onNext) {
       </div>
     )}
   </div>
-        {/* Footer */}
-        <footer className="footerPO">
-          <p>Επικοινωνία & Προσβασιμότητα</p>
-          <p>Υπουργείο Ψηφιακής Διακυβέρνησης Αθήνας 1, Αθήνα</p>
-          <p>Τηλέφωνο επικοινωνίας 210 111 1111</p>
-          <p>Ώρες επικοινωνίας 9:00-15:00 Δευτέρα-Παρασκευή</p>
-        </footer>
-  </>
-  
 );
 
 }
 
-export default PetMenu1;
+export default PetMenu2;

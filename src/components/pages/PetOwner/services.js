@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import PetMenu1 from "../PetOwner/PetMenu1"
+import PetMenu2 from "../PetOwner/PetMenu2"
 import LoginModal from "../Login";
 import { useState,useEffect } from "react";
 
@@ -43,6 +44,9 @@ function ServicePage() {
   
     if (id === "1") {
       return <PetMenu1 userId={userId}/>;
+    }
+    if (id === "2") {
+      return <PetMenu2 userId={userId}/>;
     }
   }else{
     
