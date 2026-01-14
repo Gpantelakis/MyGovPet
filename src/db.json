@@ -30,9 +30,10 @@
       "BirthDate":"06/03/2001",
       "Weight":"12",
       "photo": "https://placedog.net/400/200?id=1",
-      "vaccineRecords": [
-        { "vaccine": "Rabies", "date": "2023-01-15" },
-        { "vaccine": "Distemper", "date": "2023-02-20" }
+      "Historical-Records": [
+        { "type": "Γέννηση","type_vaccine":"", "date": "06/03/2001","vet":"Νικος Παντελάκης"  },
+        { "type": "Εμβολιασμός","type_vaccine":"Rabies", "date": "2023-01-15","vet":"Κωστας Παπαδάκης"  },
+        { "type": "Εμβολιασμός","type_vaccine":"Distemper", "date": "2023-02-20","vet":"Στέλιος Πρασιανάκης"  }
       ]
     },
     {
@@ -46,9 +47,10 @@
       "BirthDate":"06/03/2001",
       "Weight":"12",
       "photo": "https://placedog.net/400/200?id=1",
-      "vaccineRecords": [
-        { "vaccine": "Rabies", "date": "2023-01-15" },
-        { "vaccine": "Distemper", "date": "2023-02-20" }
+      "Historical-Records": [
+        { "type": "Γέννηση","type_vaccine":"", "date": "06/03/2001","vet":"Νικος Παντελάκης"  },
+        { "type": "Εμβολιασμός","type_vaccine":"Rabies", "date": "2023-01-15","vet":"Κωστας Παπαδάκης"  },
+        { "type": "Εμβολιασμός","type_vaccine":"Distemper", "date": "2023-02-20","vet":"Στέλιος Πρασιανάκης"  }
       ]
     }
   ]  

@@ -29,19 +29,6 @@
     gap: 15px;
 }
 
-.petinfo-box {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;    
-    align-items: flex-start;   
-    justify-content: flex-start; 
-    max-width: 300px; /* αρκετό για label + value */
-    width: 100%;        
-}
 
 .petinfo-box p {
     display: flex;         /* label + value σε μία γραμμή */
@@ -72,4 +59,16 @@
   display: flex;
   flex-direction: column; 
   bottom:0; 
+}
+.petinfo-box {
+  width: 45%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f9f9f9;
+}
+
+.petinfo-box-full {
+  margin-top: 30px;
+  width: 100%;
 }

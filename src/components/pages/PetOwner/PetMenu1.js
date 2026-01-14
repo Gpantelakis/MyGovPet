@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Form, Row, Col } from "react-bootstrap";
 import './PetMenu1.css'
+import React from "react";
 
 function PetMenu1({userId},onNext) {
   const [user, setUser] = useState(null);
@@ -151,7 +152,7 @@ function PetMenu1({userId},onNext) {
         </div>
 
         <div className="info-row" >
-          <Row>
+         
               <div className="petinfo-box">
 
                   <p><strong>Όνομα:</strong> {selectedPet.name}</p>
@@ -163,9 +164,9 @@ function PetMenu1({userId},onNext) {
                   <p><strong>Κιλά:</strong> {selectedPet.Weight}</p>
 
               </div>
-          </Row>
+          
 
-          <Row>
+         
             <div className="petinfo-box">
                   <p><strong>Ονομα:</strong> {user.firstname}</p>
                   <p><strong>Επώνυμο:</strong> {user.lastname}</p>
@@ -177,8 +178,36 @@ function PetMenu1({userId},onNext) {
                   <p><strong>Οδός</strong> {user.street} {user.streetNumber}</p>
                   <p><strong>Email</strong> {user.email}</p>
             </div>
-          </Row>
         </div>
+
+        <div className="petinfo-box petinfo-box-full" style={{ overflowX: "auto" }}>
+        <h4>Ιατρικό Ιστορικό</h4>
+
+        {selectedPet["Historical-Records"] && selectedPet["Historical-Records"].length > 0 ? (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(150px, 1fr))", gap: "8px" }}>
+            {/* Headers */}
+            <div><strong>Ημ/νία</strong></div>
+            <div><strong>Τύπος</strong></div>
+            <div><strong>Εμβόλιο</strong></div>
+            <div><strong>Ονοματεπώνυμο Κτηνιάτρου</strong></div>
+
+            {/* Data rows */}
+            {selectedPet["Historical-Records"].map((entry, index) => (
+              <React.Fragment key={index}>
+                <div>{entry.date}</div>
+                <div>{entry.type}</div>
+                <div>{entry.type_vaccine || "-"}</div>
+                <div>{entry.vet || "-"}</div>
+              </React.Fragment>
+            ))}
+          </div>
+        ) : (
+          <p>Δεν υπάρχουν στοιχεία ιστορικού για αυτό το κατοικίδιο.</p>
+        )}
+      </div>
+
+
+        
 
         <div className="u-buttons">
           <Button className="no-print" variant="secondary" onClick={() => setPetMenu1step(1)}>Πίσω</Button>
