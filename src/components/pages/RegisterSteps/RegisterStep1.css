@@ -2,20 +2,7 @@
   padding: 40px;
 }
 
-.step-indicator {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 40px;
-}
 
-.step-indicator span {
-  opacity: 0.5;
-}
-
-.step-indicator .active {
-  font-weight: bold;
-  opacity: 1;
-}
 
 .step1-content {
   background: var(--green);
@@ -23,8 +10,4 @@
   width: 60%;
 }
 
-.step1-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-}
+

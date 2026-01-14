@@ -90,3 +90,30 @@ form {
 .u-link:hover {
   color: var(--primary--dim);
 }
+.u-buttons{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.u-step-indicator {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.u-step-indicator span {
+  opacity: 0.5;
+}
+
+.u-step-indicator .active {
+  font-weight: bold;
+  opacity: 1;
+}
+
+
+ @media print {
+    .no-print {
+        display: none !important;
+    }
+}

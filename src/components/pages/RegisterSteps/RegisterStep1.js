@@ -10,7 +10,7 @@ const roles = [
 function RegisterStep1({ role, setRole,setFormData, onNext }) {
   return (
     <div className="step1-container">
-      <div className="step-indicator">
+      <div className="u-step-indicator">
         <span className="active">Βήμα 1-Επιλογή Ρόλου</span>
         <span>Βήμα 2-Δήλωση Στοιχείων</span>
         <span>Βήμα 3-Επιβεβαίωση & Ολοκλήρωση</span>
@@ -40,7 +40,7 @@ function RegisterStep1({ role, setRole,setFormData, onNext }) {
         </Form>
       </div>
 
-      <div className="step1-buttons">
+      <div className="u-buttons">
         <Button variant="success">ΑΡΧΙΚΗ</Button>
 
         <Button

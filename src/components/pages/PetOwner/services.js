@@ -1,4 +1,7 @@
 import { useParams } from "react-router-dom";
+import PetMenu1 from "../PetOwner/PetMenu1"
+import LoginModal from "../Login";
+import { useState,useEffect } from "react";
 
 // Το ίδιο array services που έχεις στο PetOwnerServices
 const services = [
@@ -14,20 +17,44 @@ const services = [
 
 function ServicePage() {
   // Παίρνουμε το id από το URL
+  
   const { id } = useParams();
 
-  // Βρίσκουμε το service που ταιριάζει με το id
   const service = services.find(s => s.id === Number(id));
+
+  const [showLogin,SetShowLogin]=useState(false)
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      SetShowLogin(true); // δείχνει το modal login αν δεν υπάρχει userId
+    }
+  }, []);
+  const handleClose = () => SetShowLogin(false);
 
   // Αν δεν υπάρχει service με αυτό το id
   if (!service) {
     return <p>Η υπηρεσία δεν βρέθηκε.</p>;
   }
 
+  const userId = localStorage.getItem('userId');
+
+  if(userId){
+  
+    if (id === "1") {
+      return <PetMenu1 userId={userId}/>;
+    }
+  }else{
+    
+  }
+
   return (
+     
+
     <div style={{ padding: "2rem" }}>
-      <h2>{service.title}</h2>
-      <p>{service.content}</p>
+      <LoginModal show={showLogin} handleClose={handleClose} />
+      <h1>{service.title}</h1>
+      <h3>Παρακαλούμε συνδεθείτε πρώτα στην πλατφόρμα</h3>
     </div>
   );
 }

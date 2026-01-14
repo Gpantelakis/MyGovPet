@@ -18,7 +18,7 @@ function PetOwnerMenu() {
 
   const goToService = (serviceId) => {
     // Δημιουργούμε URL δυναμικά: /petownermenu/service{id}
-    navigate(`/PetOwnerMenu/service${serviceId}`);
+    navigate(`/PetOwnerMenu/service/${serviceId}`);
   };
 
   return (

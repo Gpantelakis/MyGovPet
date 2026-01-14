@@ -3,7 +3,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './NavBar.css'
-import {useNavigate}  from "react-router-dom";
+import {Link, useNavigate}  from "react-router-dom";
+
 
 
 function NavBar() {
@@ -29,7 +30,7 @@ function NavBar() {
           >
             <NavDropdown title="Ιδιοκτήτες Κατοικιδίων" id="navbarScrollingDropdown-PetOwn">
                 
-              <NavDropdown.Item href="#petinfo">Στοιχεία κατοικιδίου</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate("/PetOwnerMenu")}>Στοιχεία κατοικιδίου</NavDropdown.Item>
               <NavDropdown.Item href="#pet_loss">Δήλωση απώλειας κατοικιδίου</NavDropdown.Item>
               <NavDropdown.Item href="#pet_find">Δήλωση εύρεσης κατοικιδίου</NavDropdown.Item>
               <NavDropdown.Item href="#appoitmnet_po">Ραντεβού με κτηνίατρο</NavDropdown.Item>

@@ -1,0 +1,63 @@
+.SearchTool {
+  display: flex;               /* Flexbox ενεργοποιημένο */
+  flex-direction: column;      /* Στοιχίζουμε κάθετα */
+  align-items: center;         /* Οριζόντια στο κέντρο */
+  justify-content: center;     /* Κάθετα στο κέντρο */
+  height: 30vh;               /* Ολόκληρο το ύψος της οθόνης */
+  gap: 10px;                   /* Απόσταση μεταξύ στοιχείων */
+}
+
+.SearchTool input {
+  padding: 8px 12px;
+  font-size: 16px;
+  width: 400px;  
+  min-width: 400px;   
+  border-radius: 8px;   
+  text-align: center;       
+}
+
+.SearchTool button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.pet-cards{
+    justify-content: center; 
+    display: flex;
+    gap: 15px;
+}
+
+.petinfo-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;    
+    align-items: flex-start;   
+    justify-content: flex-start; 
+    max-width: 300px; /* αρκετό για label + value */
+    width: 100%;        
+}
+
+.petinfo-box p {
+    display: flex;         /* label + value σε μία γραμμή */
+    gap: 8px;              /* κενό ανάμεσα σε label και value */
+    margin: 4px 0;
+    flex-wrap: nowrap; /* Αποτρέπει το wrap */
+
+}
+
+
+
+.info-row {
+    display: flex;
+    flex-direction: row; 
+    gap: 20%;          
+    justify-content: center; 
+    align-items: flex-start;
+    align-items: stretch; /* ⭐ ΚΛΕΙΔΙ: ίδιο ύψος */
+}
