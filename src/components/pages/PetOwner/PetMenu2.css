@@ -1,0 +1,91 @@
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh; 
+  height: 100%;
+  padding: 4rem 2rem 2rem 2rem; 
+  background-color: var(--darkgrey);
+}
+
+.Lost-Form{
+flex-wrap: wrap;
+}
+
+.Lost-Form p{
+    margin: 0px;
+}
+
+.Lost-Form input{
+    border-radius: 8px;
+    width: 75%;
+    min-width: 75%;
+}
+
+.Lost-Form textarea{
+  width: 100%;
+  min-height: 100px;
+  max-height: 150px;
+  resize: vertical;
+}
+
+.Lost-Photo {
+  margin-top: 10px;
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
+.footerPO {
+  width: 100%;
+  background-color: var(--light-green);
+  color: var(--black);
+  padding: 2rem;
+  text-align: center;
+  margin-top: auto;
+  
+}
+
+.Lost-Form-Submit-text{
+flex-wrap: wrap;
+
+}
+
+
+
+.Lost-Form-Submit-text p{
+    margin: 0px;
+    margin-right:20px;
+
+}
+
+.Lost-Form-Submit-text input{
+    border-radius: 8px;
+    width: 75%;
+    min-width: 75%;
+}
+
+.green-line{
+  background-color: var(--green);
+  border-radius: 8px;
+  
+}
+
+.preview-textarea {
+  max-height: 200px; /* ή ό,τι ύψος θέλεις */
+  overflow-y: auto;   /* εμφανίζει scrollbar αν ξεπεραστεί */
+  padding: 0.5rem;
+  word-wrap: break-word; /* σπάει μεγάλες λέξεις */
+}
+
+.Lost-Form-Submit-container{
+  gap: 30px;
+  display: flex;
+  justify-content: center;
+}
+.Lost-Form-Submit-container img{
+  height: auto;
+  width: auto;
+}

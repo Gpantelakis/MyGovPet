@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect,useRef } from "react";
 import { Button } from "react-bootstrap";
 import { Form, Row, Col } from "react-bootstrap";
-import './PetMenu1.css'
+import './PetMenu2.css'
+
 
 function PetMenu2({userId},onNext) {
   const [user, setUser] = useState(null);
@@ -12,11 +13,63 @@ function PetMenu2({userId},onNext) {
   const [selectedPetId, setSelectedPetId] = useState(null);
   const [PetMenu1step,setPetMenu1step]=useState(1)
   const [selectedPet,setSelectedPet]=useState(null)
+ 
+    // Refs για τα πεδία που θα ελέγχονται πριν εκτύπωση
+  const lostDateRef = useRef();
+  const locationLostRef = useRef();
+  const lostemailRef = useRef();
+  const lostphoneRef = useRef();
+  const fileInputRef = useRef();
 
+  //πεδία για φόρμα
+  const [LostData, setLostData] = useState({
+  chipNumber:"",
+  LostDate: "",
+  LocationLost: "",
+  phone: "",
+  ownerName: "",
+  petName: "",
+  birthDate: "",
+  Lostcomments: "",
+  streetNumber: "",
+  email: "",
+  photo:""
+});
 
+useEffect(() => {
+  if (user && selectedPet) {
+    setLostData(prev => ({
+      ...prev,
+      chipNumber: selectedPet.chipNumber,
+      petName: selectedPet.name,
+      birthDate: selectedPet.BirthDate,
+      ownerName: `${user.firstName} ${user.lastName}`,
+      phone: user.phone,
+      email: user.email,
+      streetNumber: user.streetNumber,
+      photo:selectedPet.photo
+    }));
+  }
+}, [user, selectedPet]);
+  
+    const LosthandleChange = (e) => {
+      const { name, value, files } = e.target;
 
+        if (files && files[0]) {
+          // Αν είναι input τύπου file
+          setLostData(prev => ({
+            ...prev,
+            [name]: URL.createObjectURL(files[0])
+          }));
+        } else {
+          // Κανονικό update για text, date, textarea
+          setLostData(prev => ({
+            ...prev,
+            [name]: value
+          }));
+        }
+    };  
 
-    // 🔹 Φέρνουμε τον χρήστη με βάση το userId
   useEffect(() => {
     fetch(`http://localhost:3001/users/${userId}`)
       .then(res => res.json())
@@ -53,8 +106,9 @@ function PetMenu2({userId},onNext) {
   
 
  return (
-  <div style={{ padding: "2rem" }}>
-    
+
+<>
+  <div className="main-container">
 
     {/* Parent div περιέχει όλα τα steps */}
     {PetMenu1step === 1 && (
@@ -62,8 +116,9 @@ function PetMenu2({userId},onNext) {
 
         {/*Step Indicator */}
         <div className="u-step-indicator">
-          <span className="active">Βήμα 1-Επιλογή Κατοικιδίου</span>
-          <span>&gt; Βήμα 2-Στοιχεία και Ιατρικό Ιστορικό Κατοικιδίου</span>
+          <span className="active">Δήλωση απώλειας κατοικιδίου</span>
+          <span className="active">&gt; Επιλογή Κατοικιδίου</span>
+          <span>&gt; Συμπλήρωση Στοιχείων</span>
         </div>
 
         <div className="SearchTool">
@@ -142,50 +197,184 @@ function PetMenu2({userId},onNext) {
     {PetMenu1step === 2 && selectedPetId && (
       <div className="Step2">
 
-        {/*Step Indicator */}
-        <div className="u-step-indicator" >
-          <span>Βήμα 1-Επιλογή Κατοικιδίου</span>
-          <span className="active">&gt; Βήμα 2-Στοιχεία και Ιατρικό Ιστορικό Κατοικιδίου</span>
-        </div>
+          {/*Step Indicator */}
+          <div className="u-step-indicator" >
+            <span className="active">Δήλωση απώλειας κατοικιδίου</span>
+            <span className="active">&gt; Επιλογή Κατοικιδίου</span>
+            <span className="active">&gt; Συμπλήρωση Στοιχείων</span>
+            <span>&gt; Προεπισκόπηση & Υποβολή</span>
+          </div>
 
-        <div className="info-row" >
-          <Row>
-              <div className="petinfo-box">
+          <h2 style={{textAlign:"center"}}>Δήλωση απώλειας κατοικιδίου</h2>
+          <div className="Lost-Form">
+            
+            <Row>
+            <Col md={4}>
+              <Form.Label>Μικροτσίπ</Form.Label>
+              <Form.Control name="Microchip" value={selectedPet.chipNumber} readOnly style={{backgroundColor:"#e0e0e0"}}/>
+            </Col>
 
-                  <p><strong>Όνομα:</strong> {selectedPet.name}</p>
-                  <p><strong>Αριθμός Τσιπ:</strong> {selectedPet.chipNumber}</p>
-                  <p><strong>Φύλο:</strong> {selectedPet.sex}</p>
-                  <p><strong>Τύπος:</strong> {selectedPet.type}</p>
-                  <p><strong>Χρώμα:</strong> {selectedPet.colour}</p>
-                  <p><strong>Ημ/νία Γέννησης:</strong> {selectedPet.BirthDate}</p>
-                  <p><strong>Κιλά:</strong> {selectedPet.Weight}</p>
+            <Col md={4}>
+              <Form.Label>Ημερομηνία εξαφάνισης</Form.Label>
+              <Form.Control name="LostDate" ref={lostDateRef} type="date" onChange={LosthandleChange}/>
+            </Col>
 
-              </div>
+          <Col md={4}>
+              <Form.Label>Τοποθεσία εξαφάνισης</Form.Label>
+              <Form.Control name="LocationLost" value={LostData.LocationLost} ref={locationLostRef} onChange={LosthandleChange}/>
+            </Col>
           </Row>
 
           <Row>
-            <div className="petinfo-box">
-                  <p><strong>Ονομα:</strong> {user.firstname}</p>
-                  <p><strong>Επώνυμο:</strong> {user.lastname}</p>
-                  <p><strong>ΑΦΜ:</strong> {user.afm}</p>
-                  <p><strong>Χώρα:</strong> {user.country}</p>
-                  <p><strong>Τηλέφωνο:</strong> {user.phone}</p>
-                  <p><strong>Φύλο:</strong> {user.gender}</p>
-                  <p><strong>Ταχ.Κώδικας:</strong> {user.postalcode}</p>
-                  <p><strong>Οδός</strong> {user.street} {user.streetNumber}</p>
-                  <p><strong>Email</strong> {user.email}</p>
-            </div>
+            <Col md={4}>
+              <Form.Label>Ονοματεπώνυμο Ιδιοκτήτη</Form.Label>
+              
+              <Form.Control name="Ownername" value={LostData.ownerName} readOnly style={{backgroundColor:"#e0e0e0"}}/>
+            </Col>
+
+            <Col md={4}>
+              <Form.Label>Τηλέφωνο</Form.Label>
+              <Form.Control name="phone" ref={lostphoneRef} value={LostData.phone} onChange={LosthandleChange} />
+            </Col>
+
+          <Col md={4}>
+              <Form.Label>Email</Form.Label>
+              <Form.Control name="email" ref={lostemailRef} value={LostData.email} onChange={LosthandleChange}/>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={4}>
+              <Form.Label>Ονοματεπώνυμο Κατοικιδίου</Form.Label>
+              <Form.Control name="petname" value={selectedPet.name} readOnly style={{backgroundColor:"#e0e0e0"}}/>
+            </Col>
+
+            <Col md={4}>
+              <Form.Label>Ημερομηνία Γέννησης Κατοικιδίου</Form.Label>
+              <Form.Control name="BirthDate" value={selectedPet.BirthDate} type="date" readOnly style={{backgroundColor:"#e0e0e0"}}/>
+            </Col>
+
+            <Col md={4}>
+              <Form.Label>Σχόλια</Form.Label>
+              <Form.Control name="Lostcomments" as="textarea" value={LostData.Lostcomments} onChange={LosthandleChange}/>
+            </Col>
+
+          </Row>
+          <Row>
+            <Col md={4}>
+              <Form.Label>Φωτογραφία</Form.Label>
+              <div className="lost-photo-uploader">
+                {/* Κρυφό input τύπου file */}
+                <input
+                  name="photo"
+                  id="fileInput"
+                  type="file"
+                  accept="image/*"
+                   ref={fileInputRef}
+                  onChange={LosthandleChange}
+                  style={{ display: "none" }}
+                />
+
+                {/* Προεπισκόπηση με double-click για αλλαγή */}
+                <img
+                  src={LostData.photo || "https://via.placeholder.com/200x200?text=Προεπισκόπηση"}
+                  alt="Προεπισκόπηση"
+                  className="Lost-Photo"
+                  onDoubleClick={() => fileInputRef.current.click()}
+                />
+              </div>
+            </Col>
           </Row>
         </div>
 
         <div className="u-buttons">
           <Button className="no-print" variant="secondary" onClick={() => setPetMenu1step(1)}>Πίσω</Button>
 
-          <Button className="no-print" variant="success" onClick={() => window.print()}>Εκτύπωση</Button>
+          <Button  variant="success" onClick={() => setPetMenu1step(3)}>Προεπισκόπηση</Button>
         </div>
       </div>
+      
     )}
+    {PetMenu1step === 3 && (
+  <div className="Step3">
+    <div className="u-step-indicator">
+      <span className="active">Δήλωση απώλειας κατοικιδίου</span>
+      <span className="active">&gt; Επιλογή Κατοικιδίου</span>
+      <span className="active">&gt; Συμπλήρωση Στοιχείων</span>
+      <span className="active">&gt; Προεπισκόπηση & Υποβολή</span>
+    </div>
+
+    <h2 style={{textAlign:"center"}}>Προεπισκόπηση Δήλωσης</h2>
+    <div className="Lost-Form-Submit-container">
+      <div className="Lost-Form-Submit-text">
+        <Row className="green-line" >
+          <Col md={8}>
+            <p><strong>Μικροτσίπ:</strong> {LostData.chipNumber}</p>
+          </Col>
+          <Col md={8}>
+            <p><strong>Ημερομηνία Εξαφάνισης:</strong> {LostData.LostDate}</p>
+          </Col>
+          
+        </Row>
+
+        <Row>
+          <Col md={8}>
+            <p><strong>Ονοματεπώνυμο Ιδιοκτήτη:</strong> {LostData.ownerName}</p>
+          </Col>
+          <Col md={8}>
+            <p><strong>Τηλέφωνο:</strong> {LostData.phone}</p>
+          </Col>
+          
+        </Row>
+
+        <Row className="green-line"  >
+          <Col md={8}>
+            <p><strong>Ονοματεπώνυμο Κατοικιδίου:</strong> {LostData.petName}</p>
+          </Col>
+          <Col md={8}>
+            <p><strong>Ημερομηνία Γέννησης:</strong> {LostData.birthDate}</p>
+          </Col>
+          
+        </Row>
+
+        <Row>
+          <Col md={8}>
+            <p><strong>Τοποθεσία Εξαφάνισης:</strong> {LostData.LocationLost}</p>
+          </Col>
+          <Col md={8}>
+            <p><strong>Email:</strong> {LostData.email}</p>
+          </Col>
+        </Row>
+
+        <Row className="green-line" >
+          <Col md={8}>
+            <p className="preview-textarea"><strong>Σχόλια:</strong> {LostData.Lostcomments}</p>
+          </Col>
+        </Row>
+      </div>
+
+        <img
+          src={LostData.photo || "https://via.placeholder.com/200x200?text=Προεπισκόπηση"}
+          alt="Προεπισκόπηση"
+          className="Lost-Photo"
+        />
+    </div>
+
+    <div className="u-buttons">
+      <Button variant="secondary" onClick={() => setPetMenu1step(2)}>Πίσω</Button>
+      <Button variant="success" onClick={() => console.log("Υποβολή δεδομένων:", LostData)}>Υποβολή</Button>
+    </div>
   </div>
+)}
+  </div>
+  {/* Footer */}
+  <footer className="footerPO">
+  <p>Επικοινωνία & Προσβασιμότητα</p>
+  <p>Υπουργείο Ψηφιακής Διακυβέρνησης Αθήνας 1, Αθήνα</p>
+  <p>Τηλέφωνο επικοινωνίας 210 111 1111</p>
+  <p>Ώρες επικοινωνίας 9:00-15:00 Δευτέρα-Παρασκευή</p>
+  </footer>
+  </>
 );
 
 }

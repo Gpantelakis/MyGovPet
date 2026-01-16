@@ -1,6 +1,5 @@
 .pageBackGround{
   background-color: var(--white);
-  /*{background-image: url("../../../../public/Home.jpg")*/
 }
 
 .pageBackGround .service-card {
@@ -16,16 +15,7 @@
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-.footerPO {
-  width: 100%;
-  background-color: var(--darkgrey);
-  color: VAR(--black);
-  padding: 2rem 1rem;
-  margin-top: 3rem;
-  text-align: center;      
-  display: flex;
-  flex-direction: column;  
-}
+
 
 
 

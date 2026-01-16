@@ -96,13 +96,7 @@
 }
 
 /* FOOTER */
-.footer {
-  background: #8fbf8f;
-  display: flex;
-  justify-content: space-between;
-  padding: 30px 60px;
-  color: #1f3d1f;
-}
+
 
 .social .icons span {
   margin-right: 10px;

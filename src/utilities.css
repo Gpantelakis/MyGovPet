@@ -117,3 +117,11 @@ form {
         display: none !important;
     }
 }
+
+.footer {
+  background: #8fbf8f;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+  color: #1f3d1f;
+}
