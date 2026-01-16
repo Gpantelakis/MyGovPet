@@ -8,28 +8,28 @@
   background-color: var(--darkgrey);
 }
 
-.Lost-Form{
+.Find-Form{
 flex-wrap: wrap;
 }
 
-.Lost-Form p{
+.Find-Form p{
     margin: 0px;
 }
 
-.Lost-Form input{
+.Find-Form input{
     border-radius: 8px;
     width: 75%;
     min-width: 75%;
 }
 
-.Lost-Form textarea{
+.Find-Form textarea{
   width: 100%;
   min-height: 100px;
   max-height: 150px;
   resize: vertical;
 }
 
-.Lost-Photo {
+.Find-Photo {
   margin-top: 10px;
   width: 200px;
   height: auto;
@@ -48,24 +48,25 @@ flex-wrap: wrap;
   
 }
 
-.Lost-Form-Submit-text{
+.Find-Form-Submit-text{
 flex-wrap: wrap;
 
 }
 
 
 
-.Lost-Form-Submit-text p{
+.Find-Form-Submit-text p{
     margin: 0px;
     margin-right:20px;
 
 }
 
-.Lost-Form-Submit-text input{
+.Find-Form-Submit-text input{
     border-radius: 8px;
     width: 75%;
     min-width: 75%;
 }
+
 
 
 .preview-textarea {
@@ -75,12 +76,12 @@ flex-wrap: wrap;
   word-wrap: break-word; /* σπάει μεγάλες λέξεις */
 }
 
-.Lost-Form-Submit-container{
+.Find-Form-Submit-container{
   gap: 30px;
   display: flex;
   justify-content: center;
 }
-.Lost-Form-Submit-container img{
+.Find-Form-Submit-container img{
   height: auto;
   width: auto;
 }

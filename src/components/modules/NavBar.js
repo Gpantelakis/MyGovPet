@@ -31,7 +31,7 @@ function NavBar() {
             <NavDropdown title="Ιδιοκτήτες Κατοικιδίων" id="navbarScrollingDropdown-PetOwn">
                 
               <NavDropdown.Item onClick={() => navigate("/PetOwnerMenu/service/1")}>Στοιχεία κατοικιδίου</NavDropdown.Item>
-              <NavDropdown.Item href="#pet_loss">Δήλωση απώλειας κατοικιδίου</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate("/PetOwnerMenu/service/2")}>Δήλωση απώλειας κατοικιδίου</NavDropdown.Item>
               <NavDropdown.Item href="#pet_find">Δήλωση εύρεσης κατοικιδίου</NavDropdown.Item>
               <NavDropdown.Item href="#appoitmnet_po">Ραντεβού με κτηνίατρο</NavDropdown.Item>
               <NavDropdown.Item href="#rate_vet">Αναζήτηση και Αξιολόγηση Κτηνιάτρου</NavDropdown.Item>

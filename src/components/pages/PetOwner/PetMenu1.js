@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { Form, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import './PetMenu1.css'
 import React from "react";
 
@@ -14,7 +14,7 @@ function PetMenu1({userId},onNext) {
   const [PetMenu1step,setPetMenu1step]=useState(1)
   const [selectedPet,setSelectedPet]=useState(null)
 
-
+  const navigate=useNavigate();
 
 
     // 🔹 Φέρνουμε τον χρήστη με βάση το userId
@@ -130,7 +130,7 @@ function PetMenu1({userId},onNext) {
         </div>
 
         <div className="u-buttons">
-          <Button variant="success">ΑΡΧΙΚΗ</Button>
+          <Button variant="success" onClick={()=>navigate("/PetOwnerMenu")}>Υπηρεσίες</Button>
           <Button
             variant="secondary"
             onClick={() => selectedPetId && setPetMenu1step(2)}

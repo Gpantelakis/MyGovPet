@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useEffect,useRef } from "react";
 import { Button } from "react-bootstrap";
 import { Form, Row, Col } from "react-bootstrap";
-import './PetMenu2.css'
+import './PetMenu3.css'
 import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
 
 
 
-function PetMenu2({userId},onNext) {
+function PetMenu3({userId}) {
   const [user, setUser] = useState(null);
   const [chipNumber, setChipNumber] = useState("");
   const [pet, setPet] = useState([]);
@@ -22,23 +22,23 @@ function PetMenu2({userId},onNext) {
   const [formError, setFormError] = useState("");
  
     // Refs για τα πεδία που θα ελέγχονται πριν εκτύπωση
-  const lostDateRef = useRef();
-  const locationLostRef = useRef();
-  const lostemailRef = useRef();
-  const lostphoneRef = useRef();
+  const FindDateRef = useRef();
+  const locationFindRef = useRef();
+  const FindemailRef = useRef();
+  const FindphoneRef = useRef();
   const fileInputRef = useRef();
   const navigate = useNavigate();
 
   //πεδία για φόρμα
-  const [LostData, setLostData] = useState({
+  const [FindData, setFindData] = useState({
   chipNumber:"",
-  LostDate: "",
-  LocationLost: "",
+  FindDate: "",
+  LocationFind: "",
   phone: "",
   ownerName: "",
   petName: "",
   birthDate: "",
-  Lostcomments: "",
+  Findcomments: "",
   streetNumber: "",
   email: "",
   photo:""
@@ -46,7 +46,7 @@ function PetMenu2({userId},onNext) {
 
 useEffect(() => {
   if (user && selectedPet) {
-    setLostData(prev => ({
+    setFindData(prev => ({
       ...prev,
       chipNumber: selectedPet.chipNumber,
       petName: selectedPet.name,
@@ -61,18 +61,18 @@ useEffect(() => {
   }
 }, [user, selectedPet]);
   
-    const LosthandleChange = (e) => {
+    const FindhandleChange = (e) => {
       const { name, value, files } = e.target;
 
         if (files && files[0]) {
           // Αν είναι input τύπου file
-          setLostData(prev => ({
+          setFindData(prev => ({
             ...prev,
             [name]: URL.createObjectURL(files[0])
           }));
         } else {
           // Κανονικό update για text, date, textarea
-          setLostData(prev => ({
+          setFindData(prev => ({
             ...prev,
             [name]: value
           }));
@@ -112,12 +112,12 @@ useEffect(() => {
 
   const validateStep2 = () => {
   if (
-    !LostData.LostDate ||
-    !LostData.LocationLost ||
-    !LostData.phone ||
-    !LostData.email ||
-    !LostData.Lostcomments ||
-    !LostData.photo
+    !FindData.FindDate ||
+    !FindData.LocationFind ||
+    !FindData.phone ||
+    !FindData.email ||
+    !FindData.Findcomments ||
+    !FindData.photo
   ) {
     setFormError("Παρακαλώ συμπληρώστε όλα τα στοιχεία");
     alert(formError)
@@ -128,38 +128,55 @@ useEffect(() => {
   return true;
 };
 
-  const LosthandleSubmit = async () => {
+  const FindhandleSubmit = async () => {
   setIsSubmitting(true);
   setSubmitError(false);
   const startTime = Date.now();
 
   try {
-    const response = await fetch("http://localhost:3001/lostPets", {
+    const response = await fetch("http://localhost:3001/FindPets", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ...LostData,
+        ...FindData,
         createdAt: new Date().toISOString(),
-        userId:localStorage.getItem('userId'),
-        status: "active",
+        userId:localStorage.getItem('userId')
       }),
     });
 
     if (!response.ok) throw new Error("Submit failed");
 
-    console.log(`http://localhost:3001/pets/${Number(selectedPetId)}`)
     const petResponse = await fetch(
       `http://localhost:3001/pets/${Number(selectedPetId)}`,
       {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lost: true }),
+        body: JSON.stringify({ lost: false }),
       }
     );
+    
+    if (!petResponse.ok) throw new Error("Update Pet failed");
 
-    if (!petResponse.ok) throw new Error("Pet update failed");
+    const getResponse = await fetch(`http://localhost:3001/lostPets?chipNumber=${selectedPet.chipNumber}&status=active`);
+    const lostPets = await getResponse.json();
+
+    if (lostPets.length === 0) {
+      console.log("Δεν υπάρχει lostPet με αυτό το chipNumber");
+      return;
+    }
+
+    const lostPetId = lostPets[0].id;
+    const LostPetResponse=await fetch(`http://localhost:3001/lostPets/${lostPetId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status: "inactive" }),
+    });
+
+    if (!LostPetResponse.ok) throw new Error("Update Pet failed");
+
+      
       const elapsed = Date.now() - startTime;
       const minDelay = 2000;
 
@@ -189,7 +206,7 @@ useEffect(() => {
 
         {/*Step Indicator */}
         <div className="u-step-indicator">
-          <span className="active">Δήλωση απώλειας κατοικιδίου</span>
+          <span className="active">Δήλωση Εύρεσης κατοικιδίου</span>
             <span className="active">&gt; Επιλογή Κατοικιδίου</span>
             <span>&gt; Συμπλήρωση Στοιχείων</span>
             <span>&gt; Προεπισκόπηση & Υποβολή</span>
@@ -229,7 +246,7 @@ useEffect(() => {
                   type="radio"
                   name="selectedPet"
                   checked={selectedPetId === p.id}
-                  disabled={p.lost}
+                  disabled={!p.lost}
                   onChange={() => {setSelectedPetId(p.id)
                                   setSelectedPet(p)
                   }}
@@ -274,14 +291,14 @@ useEffect(() => {
 
           {/*Step Indicator */}
           <div className="u-step-indicator" >
-            <span className="active">Δήλωση απώλειας κατοικιδίου</span>
+            <span className="active">Δήλωση Εύρεσης κατοικιδίου</span>
             <span className="active">&gt; Επιλογή Κατοικιδίου</span>
             <span className="active">&gt; Συμπλήρωση Στοιχείων</span>
             <span>&gt; Προεπισκόπηση & Υποβολή</span>
           </div>
 
-          <h2 style={{textAlign:"center"}}>Δήλωση απώλειας κατοικιδίου</h2>
-          <div className="Lost-Form">
+          <h2 style={{textAlign:"center"}}>Δήλωση Εύρεσης κατοικιδίου</h2>
+          <div className="Find-Form">
             
             <Row>
             <Col md={4}>
@@ -290,13 +307,13 @@ useEffect(() => {
             </Col>
 
             <Col md={4}>
-              <Form.Label>Ημερομηνία εξαφάνισης</Form.Label>
-              <Form.Control name="LostDate" ref={lostDateRef} type="date" onChange={LosthandleChange}/>
+              <Form.Label>Ημερομηνία εύρεσης</Form.Label>
+              <Form.Control name="FindDate" ref={FindDateRef} type="date" onChange={FindhandleChange}/>
             </Col>
 
           <Col md={4}>
-              <Form.Label>Τοποθεσία εξαφάνισης</Form.Label>
-              <Form.Control name="LocationLost" value={LostData.LocationLost} ref={locationLostRef} onChange={LosthandleChange}/>
+              <Form.Label>Τοποθεσία εύρεσης</Form.Label>
+              <Form.Control name="LocationFind" value={FindData.LocationFind} ref={locationFindRef} onChange={FindhandleChange}/>
             </Col>
           </Row>
 
@@ -304,17 +321,17 @@ useEffect(() => {
             <Col md={4}>
               <Form.Label>Ονοματεπώνυμο Ιδιοκτήτη</Form.Label>
               
-              <Form.Control name="Ownername" value={LostData.ownerName} readOnly style={{backgroundColor:"#e0e0e0"}}/>
+              <Form.Control name="Ownername" value={FindData.ownerName} readOnly style={{backgroundColor:"#e0e0e0"}}/>
             </Col>
 
             <Col md={4}>
               <Form.Label>Τηλέφωνο</Form.Label>
-              <Form.Control name="phone" ref={lostphoneRef} value={LostData.phone} onChange={LosthandleChange} />
+              <Form.Control name="phone" ref={FindphoneRef} value={FindData.phone} onChange={FindhandleChange} />
             </Col>
 
           <Col md={4}>
               <Form.Label>Email</Form.Label>
-              <Form.Control name="email" ref={lostemailRef} value={LostData.email} onChange={LosthandleChange}/>
+              <Form.Control name="email" ref={FindemailRef} value={FindData.email} onChange={FindhandleChange}/>
             </Col>
           </Row>
 
@@ -331,14 +348,14 @@ useEffect(() => {
 
             <Col md={4}>
               <Form.Label>Σχόλια</Form.Label>
-              <Form.Control name="Lostcomments" as="textarea" value={LostData.Lostcomments} onChange={LosthandleChange}/>
+              <Form.Control name="Findcomments" as="textarea" value={FindData.Findcomments} onChange={FindhandleChange}/>
             </Col>
 
           </Row>
           <Row>
             <Col md={4}>
               <Form.Label>Φωτογραφία</Form.Label>
-              <div className="lost-photo-uploader">
+              <div className="Find-photo-uploader">
                 {/* Κρυφό input τύπου file */}
                 <input
                   name="photo"
@@ -346,15 +363,15 @@ useEffect(() => {
                   type="file"
                   accept="image/*"
                    ref={fileInputRef}
-                  onChange={LosthandleChange}
+                  onChange={FindhandleChange}
                   style={{ display: "none" }}
                 />
 
                 {/* Προεπισκόπηση με double-click για αλλαγή */}
                 <img
-                  src={LostData.photo || "https://via.placeholder.com/200x200?text=Προεπισκόπηση"}
+                  src={FindData.photo || "https://via.placeholder.com/200x200?text=Προεπισκόπηση"}
                   alt="Προεπισκόπηση"
-                  className="Lost-Photo"
+                  className="Find-Photo"
                   onDoubleClick={() => fileInputRef.current.click()}
                 />
               </div>
@@ -373,65 +390,65 @@ useEffect(() => {
     {PetMenu1step === 3 && (
   <div className="Step3">
     <div className="u-step-indicator">
-      <span className="active">Δήλωση απώλειας κατοικιδίου</span>
+      <span className="active">Δήλωση Εύρεσης κατοικιδίου</span>
       <span className="active">&gt; Επιλογή Κατοικιδίου</span>
       <span className="active">&gt; Συμπλήρωση Στοιχείων</span>
       <span className="active">&gt; Προεπισκόπηση & Υποβολή</span>
     </div>
 
     <h2 style={{textAlign:"center"}}>Προεπισκόπηση Δήλωσης</h2>
-    <div className="Lost-Form-Submit-container">
-      <div className="Lost-Form-Submit-text">
+    <div className="Find-Form-Submit-container">
+      <div className="Find-Form-Submit-text">
         <Row className="u-green-line" >
           <Col md={8}>
-            <p><strong>Μικροτσίπ:</strong> {LostData.chipNumber}</p>
+            <p><strong>Μικροτσίπ:</strong> {FindData.chipNumber}</p>
           </Col>
           <Col md={8}>
-            <p><strong>Ονοματεπώνυμο Κατοικιδίου:</strong> {LostData.petName}</p>
+            <p><strong>Ονοματεπώνυμο Κατοικιδίου:</strong> {FindData.petName}</p>
           </Col>
         </Row>
 
         <Row>
           <Col md={8}>
-            <p><strong>Ονοματεπώνυμο Ιδιοκτήτη:</strong> {LostData.ownerName}</p>
+            <p><strong>Ονοματεπώνυμο Ιδιοκτήτη:</strong> {FindData.ownerName}</p>
           </Col>
           <Col md={8}>
-            <p><strong>Τηλέφωνο:</strong> {LostData.phone}</p>
+            <p><strong>Τηλέφωνο:</strong> {FindData.phone}</p>
           </Col>
           
         </Row>
 
         <Row className="u-green-line"  >
           <Col md={8}>
-            <p><strong>Email:</strong> {LostData.email}</p>
+            <p><strong>Email:</strong> {FindData.email}</p>
           </Col>
           <Col md={8}>
-            <p><strong>Ημερομηνία Γέννησης Κατοικιδίου:</strong> {LostData.birthDate}</p>
+            <p><strong>Ημερομηνία Γέννησης Κατοικιδίου:</strong> {FindData.birthDate}</p>
           </Col>
         </Row>
 
         <Row>
           
           <Col md={8}>
-            <p><strong>Ημερομηνία Εξαφάνισης:</strong> {LostData.LostDate}</p>
+            <p><strong>Ημερομηνία εύρεσης:</strong> {FindData.FindDate}</p>
           </Col>
           <Col md={8}>
-            <p><strong>Τοποθεσία Εξαφάνισης:</strong> {LostData.LocationLost}</p>
+            <p><strong>Τοποθεσία εύρεσης:</strong> {FindData.LocationFind}</p>
           </Col>
           
         </Row>
 
         <Row className="u-green-line" >
           <Col md={8}>
-            <p className="preview-textarea"><strong>Σχόλια:</strong> {LostData.Lostcomments}</p>
+            <p className="preview-textarea"><strong>Σχόλια:</strong> {FindData.Findcomments}</p>
           </Col>
         </Row>
       </div>
 
         <img
-          src={LostData.photo || "https://via.placeholder.com/200x200?text=Προεπισκόπηση"}
+          src={FindData.photo || "https://via.placeholder.com/200x200?text=Προεπισκόπηση"}
           alt="Προεπισκόπηση"
-          className="Lost-Photo"
+          className="Find-Photo"
         />
     </div>
 
@@ -440,7 +457,7 @@ useEffect(() => {
 
       <Button
   variant="success"
-  onClick={LosthandleSubmit}
+  onClick={FindhandleSubmit}
   disabled={isSubmitting || submitSuccess}
 >
             {isSubmitting ? (
@@ -482,4 +499,4 @@ useEffect(() => {
 
 }
 
-export default PetMenu2;
+export default PetMenu3;

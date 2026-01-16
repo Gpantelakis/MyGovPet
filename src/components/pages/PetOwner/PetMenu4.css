@@ -1,0 +1,107 @@
+/* Wrapper */
+.pet-menu-history {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.pet-menu-history h2 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #1f2937;
+}
+
+/* Table */
+.pet-menu-history table {
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+/* Table header */
+.pet-menu-history thead th {
+  background-color: #f3f4f6;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Table body cells */
+.pet-menu-history tbody td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Hover row */
+.pet-menu-history tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Status */
+.status-found {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.status-missing {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* Button */
+.pet-menu-history .btn-outline-primary {
+  font-size: 13px;
+  padding: 4px 10px;
+}
+
+/* Spinner */
+.loading-wrapper {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.loading-wrapper p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pet-menu-history table {
+    font-size: 13px;
+  }
+
+  .pet-menu-history h2 {
+    font-size: 20px;
+  }
+}
+
+.DateFilter {
+  padding: 4px 10px;             
+  border: 1px solid #ced4da;    
+  border-radius: 5px;            
+  font-size: 14px;               
+  outline: none;                 
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; 
+}
+
+.DateFilter:focus {
+  border-color: #007bff;         
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+.DateFilter + .DateFilter {
+  margin-left: 4px;             
+}
+
+
+@media (max-width: 576px) {
+  .DateFilter {
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 0;
+  }
+}

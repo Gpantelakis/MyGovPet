@@ -125,3 +125,9 @@ form {
   padding: 30px 60px;
   color: #1f3d1f;
 }
+
+.u-green-line{
+  background-color: var(--light-green);
+  border-radius: 8px;
+  
+}

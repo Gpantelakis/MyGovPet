@@ -33,16 +33,17 @@
   ],
   "pets": [
     {
-      "id": 1,
+      "id": "1",
       "ownerAfm": "765432",
       "chipNumber": "XNM2345",
-      "name": "Robert",
+      "name": "Μπουμπης",
       "type": "Σκύλος",
       "sex": "Αγόρι",
-      "colour": "Καφέ",
-      "BirthDate": "2001-03-06",
+      "colour": "Άσπρο",
+      "BirthDate": "2015-04-06",
       "Weight": "12",
       "photo": "https://placedog.net/400/200?id=1",
+      "lost": false,
       "Historical-Records": [
         {
           "type": "Γέννηση",
@@ -65,7 +66,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "ownerAfm": "765432",
       "chipNumber": "XNM2344",
       "name": "Robert",
@@ -74,7 +75,8 @@
       "colour": "Καφέ",
       "BirthDate": "2001-03-06",
       "Weight": "12",
-      "photo": "https://placedog.net/400/200?id=1",
+      "photo": "https://placedog.net/400/200?id=3",
+      "lost": false,
       "Historical-Records": [
         {
           "type": "Γέννηση",
@@ -95,6 +97,43 @@
           "vet": "Στέλιος Πρασιανάκης"
         }
       ]
+    }
+  ],
+  "lostPets": [
+    {
+      "id": "fec3",
+      "chipNumber": "XNM2345",
+      "LostDate": "2026-01-15",
+      "LocationLost": "Αγία Παρασκευή",
+      "phone": "6973453310",
+      "ownerName": "GEORGIOS PANTELAKIS",
+      "petName": "Μπουμπης",
+      "birthDate": "2015-04-06",
+      "Lostcomments": "Φοράει κοκκινο κωλάρο και γράφει το όνομα του.",
+      "streetNumber": "12",
+      "email": "giorgos.chania@hotmail.com",
+      "photo": "https://placedog.net/400/200?id=1",
+      "createdAt": "2026-01-16T19:00:31.864Z",
+      "userId": "55d8",
+      "status": "inactive"
+    }
+  ],
+  "FindPets": [
+    {
+      "id": "84be",
+      "chipNumber": "XNM2345",
+      "FindDate": "2026-01-16",
+      "LocationFind": "Χολαργό",
+      "phone": "6973453310",
+      "ownerName": "GEORGIOS PANTELAKIS",
+      "petName": "Μπουμπης",
+      "birthDate": "2015-04-06",
+      "Findcomments": "Το βρήκαμε σε ένα καταφύγιο σκύλων.",
+      "streetNumber": "12",
+      "email": "giorgos.chania@hotmail.com",
+      "photo": "https://placedog.net/400/200?id=1",
+      "createdAt": "2026-01-16T19:01:13.321Z",
+      "userId": "55d8"
     }
   ]
 }
