@@ -99,7 +99,9 @@ form {
 .u-step-indicator {
   display: flex;
   gap: 10px;
+  margin-top: 5px;
   margin-bottom: 40px;
+  margin-left: 20px;
 }
 
 .u-step-indicator span {
