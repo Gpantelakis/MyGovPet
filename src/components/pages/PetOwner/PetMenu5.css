@@ -41,4 +41,37 @@ padding: 10px;
   transition: background-color 0.2s;
 }
 
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filters select,
+.filters input {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  min-width: 180px;
+}
+
+.btn1{
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
+
+}
+
+.appointment-form {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
