@@ -1,0 +1,44 @@
+.pet-menu-vets{
+background-color: var(--darkgrey);
+padding: 10px;
+}
+
+.vets-table{
+  border-radius: 12px;
+  overflow: hidden; 
+  box-shadow: 0 2px 3px ;
+  margin-bottom: 5px;;
+}
+.pet-menu-vets h2 {
+  color: #333;
+}
+
+.pet-menu-vets table th,
+.pet-menu-vets table td {
+  vertical-align: middle;
+}
+
+.pet-menu-vets table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.appointments {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 8px;
+  max-height: 120px; 
+  overflow-y: auto; 
+   overflow-x: auto;
+  padding-right: 4px; 
+}
+
+.appointment-pill  {
+  border: none;
+  border-radius: 50px; 
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+
