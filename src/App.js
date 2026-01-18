@@ -19,6 +19,7 @@ function App() {
         <NavBar />
         <div className="App-container">
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/PetOwnerMenu" element={<PetOwnerMenu />} />
