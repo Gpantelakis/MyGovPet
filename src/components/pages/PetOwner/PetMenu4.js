@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Button,Table,Spinner } from "react-bootstrap";
 import './PetMenu4.css'
 import DeclarationView from "./../../modules/DeclarationsView";
+import { useNavigate } from "react-router-dom";
 
 function PetMenu4({userId}){
   // Συνδυάζουμε lost και found σε ένα array για τον πίνακα
@@ -18,6 +19,7 @@ function PetMenu4({userId}){
 };
 const [dateFrom, setDateFrom] = useState("");
 const [dateTo, setDateTo] = useState("");
+const navigate=useNavigate()
 
 
 
@@ -212,6 +214,9 @@ const [dateTo, setDateTo] = useState("");
             onClose={() => setShowDeclaration(false)}
             />
         )}
+        <div className="btn1">
+        <Button variant="dark" onClick={()=>{navigate("/PetOwnerMenu")}}>Υπηρεσίες</Button>
+      </div>
         {/* Footer */}
         <footer className="footerPO">
         <p>Επικοινωνία & Προσβασιμότητα</p>
