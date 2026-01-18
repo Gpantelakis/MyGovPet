@@ -12,8 +12,8 @@
       "street": "Βασιλείου Βουλγαροκτόνου",
       "streetNumber": "12",
       "postalCode": "15343",
-      "email": "giorgos.chania@hotmail.com",
-      "password": "Giorgos2001!"
+      "email": "giorgos.pantelakis@example.com",
+      "password": "Dit2026!"
     },
     {
       "id": "f3b5",
@@ -148,14 +148,17 @@
       "special": "Χειρούργος",
       "availableAppointments": [
         {
+          "id":"1",
           "time": "2026-01-20T10:00:00",
           "status": "available"
         },
         {
+          "id":"2",
           "time": "2026-01-20T14:00:00",
           "status": "unable"
         },
         {
+          "id":"3",
           "time": "2026-01-21T09:00:00",
           "status": "available"
         }
@@ -172,14 +175,17 @@
       "special": "Δερματολόγος",
       "availableAppointments": [
         {
+          "id":"1",
           "time": "2026-01-20T11:00:00",
           "status": "available"
         },
         {
+          "id":"2",
           "time": "2026-01-21T13:00:00",
           "status": "available"
         },
         {
+          "id":"3",
           "time": "2026-01-22T10:00:00",
           "status": "available"
         }
