@@ -25,7 +25,7 @@ function PetOwnerMenu() {
     <div className="pageBackGround">
       <h2 className="text-center">Υπηρεσίες Ιδιοκτήτη Κατοικιδίου</h2>
       <Container>
-        <Row xs={1} md={2} lg={4} className="g-3"> {/*xs για κινητα md για tablet lg για ολοκληρη οθόνη g-3  απόσταση*/}
+        <Row xs={1} md={2} lg={4} className="g-3" style={{marginBottom:"6px"}}> {/*xs για κινητα md για tablet lg για ολοκληρη οθόνη g-3  απόσταση*/}
           {services.map(service => (
             <Col key={service.id}>
               <Card

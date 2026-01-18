@@ -137,35 +137,56 @@
     }
   ],
   "vets": [
-  {
-    "id": "vet1",
-    "firstName": "Νίκος",
-    "lastName": "Παντελάκης",
-    "phone": "6971234567",
-    "email": "nikos.vet@example.com",
-    "clinic": "VetCare Αγία Παρασκευή",
-    "clinicAddress": "Βασιλείου Βουλγαροκτόνου 45, Αγία Παρασκευή, 15343",
-    "special":"Χειρούργος",
-    "availableAppointments": [
-      {"time":"2026-01-20T10:00:00" ,"status":"available"},
-      {"time":"2026-01-20T14:00:00","status":"unable"},
-      {"time":"2026-01-21T09:00:00","status":"available"}
-    ]
-  },
-  {
-    "id": "vet2",
-    "firstName": "Κώστας",
-    "lastName": "Παπαδάκης",
-    "phone": "6977654321",
-    "email": "kostas.vet@example.com",
-    "clinic": "AnimalCare Χολαργό",
-    "clinicAddress": "Λεωφ. Μεσογείων 123, Χολαργό, 15561",
-    "special":"Δερματολόγος",
-    "availableAppointments": [
-      {"time":"2026-01-20T11:00:00","status":"available"},
-      {"time":"2026-01-21T13:00:00","status":"available"},
-      {"time":"2026-01-22T10:00:00","status":"available"}
-    ]
-  }
-]
+    {
+      "id": "vet1",
+      "firstName": "Νίκος",
+      "lastName": "Παντελάκης",
+      "phone": "6971234567",
+      "email": "nikos.vet@example.com",
+      "clinic": "VetCare Αγία Παρασκευή",
+      "clinicAddress": "Βασιλείου Βουλγαροκτόνου 45, Αγία Παρασκευή, 15343",
+      "special": "Χειρούργος",
+      "availableAppointments": [
+        {
+          "time": "2026-01-20T10:00:00",
+          "status": "available"
+        },
+        {
+          "time": "2026-01-20T14:00:00",
+          "status": "unable"
+        },
+        {
+          "time": "2026-01-21T09:00:00",
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "id": "vet2",
+      "firstName": "Κώστας",
+      "lastName": "Παπαδάκης",
+      "phone": "6977654321",
+      "email": "kostas.vet@example.com",
+      "clinic": "AnimalCare Χολαργό",
+      "clinicAddress": "Λεωφ. Μεσογείων 123, Χολαργό, 15561",
+      "special": "Δερματολόγος",
+      "availableAppointments": [
+        {
+          "time": "2026-01-20T11:00:00",
+          "status": "available"
+        },
+        {
+          "time": "2026-01-21T13:00:00",
+          "status": "available"
+        },
+        {
+          "time": "2026-01-22T10:00:00",
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "appointments": [
+    
+  ]
 }
