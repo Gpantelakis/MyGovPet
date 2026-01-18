@@ -1,0 +1,68 @@
+.PageContainer {
+  background-color: var(--darkgrey);
+  padding: 40px;
+}
+
+.appoitment-info {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap; /* responsive: πάει κάτω σε μικρές οθόνες */
+}
+
+.appoitment-form, .appoitment-table {
+  flex: 1 1 300px; /* minimum width για responsive */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: #fff;
+}
+
+.appoitment-form input,
+.appoitment-form select,
+.appoitment-form textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.appoitment-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.appoitment-table th {
+
+  background-color: #f1f1f1;
+}
+
+.appoitment-table td {
+  background-color: #fafafa;
+   white-space: nowrap;   /* αποτρέπει το σπάσιμο σε νέα γραμμή */
+    overflow: hidden;      /* αν το κείμενο είναι πολύ μεγάλο */
+    text-overflow: ellipsis; /* εμφανίζει ... αν δεν χωράει */   
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.appoitment-table tr:last-child td {
+  border-bottom: none;
+}
+
+.u-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.error-text {
+  color: red;
+  font-size: 0.85rem;
+  margin: 0 0 8px 0;
+}

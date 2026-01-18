@@ -94,6 +94,11 @@ function PetMenu5() {
   return (
     <>
     <div className="pet-menu-vets" >
+        <div className="u-step-indicator">
+            <span className="active">Υπηρεσίες Ιδιοκτήτη </span>
+            <span className="active">&gt; Ραντεβού με Κτηνίατρο</span>
+            <span>&gt; Συμπλήρωση στοιχείων και υποβολή</span>
+        </div>
       <h2 style={{ textAlign: "center", marginBottom: "20px" }}>ΚΤΗΝΙΑΤΡΟΙ</h2>
         <div className="filters">
             <select
