@@ -122,7 +122,7 @@ function PetMenu8({userId}){
         <div className="pet-menu-history">
             <div style={{ padding: "20px" }}>
             <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-                ΑΚΎΡΩΣΗ ΡΑΝΤΕΒΟΥ
+                ΙΣΤΟΡΙΚΟ ΡΑΝΤΕΒΟΥ
             </h2>
 
             <div style={{ display: "flex", gap: "10px", marginBottom: "15px" }}>
