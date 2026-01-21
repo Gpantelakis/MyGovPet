@@ -16,7 +16,7 @@
       "password": "Giorgos2001!"
     },
     {
-      "id": "7af5",
+      "id": "0cba",
       "role": 1,
       "firstName": "Γεώργιος",
       "lastName": "Παντελάκης",
@@ -99,8 +99,76 @@
       ]
     }
   ],
-  "lostPets": [],
-  "FindPets": [],
+  "lostPets": [
+    {
+      "id": "3a1e",
+      "chipNumber": "XNM2345",
+      "LostDate": "2026-01-21",
+      "LocationLost": "ΑΓΙΟΣ ΔΗΜΗΤΡΙΟΣ",
+      "phone": "6971111111",
+      "ownerName": "Γεώργιος Παντελάκης",
+      "petName": "Μπουμπης",
+      "birthDate": "2015-04-06",
+      "Lostcomments": "α",
+      "streetNumber": "12",
+      "email": "giorgos.pantelakis@example.com",
+      "photo": "https://placedog.net/400/200?id=1",
+      "createdAt": "2026-01-21T18:03:53.033Z",
+      "userId": "7af5",
+      "status": "inactive"
+    },
+    {
+      "id": "bf18",
+      "chipNumber": "XNM2345",
+      "LostDate": "2026-01-19",
+      "LocationLost": "ΑΓΙΟΣ ΔΗΜΗΤΡΙΟΣ",
+      "phone": "6971111111",
+      "ownerName": "Γεώργιος Παντελάκης",
+      "petName": "Μπουμπης",
+      "birthDate": "2015-04-06",
+      "Lostcomments": "Φοράει κοκκινο κολάρο",
+      "streetNumber": "12",
+      "email": "giorgos.pantelakis@example.com",
+      "photo": "https://placedog.net/400/200?id=1",
+      "createdAt": "2026-01-21T18:25:47.734Z",
+      "userId": "0cba",
+      "status": "inactive"
+    }
+  ],
+  "FindPets": [
+    {
+      "id": "3a4d",
+      "chipNumber": "XNM2345",
+      "FindDate": "2026-01-21",
+      "LocationFind": "Χολαργό",
+      "phone": "6971111111",
+      "ownerName": "Γεώργιος Παντελάκης",
+      "petName": "Μπουμπης",
+      "birthDate": "2015-04-06",
+      "Findcomments": "Σε καταφύγιο",
+      "streetNumber": "12",
+      "email": "giorgos.pantelakis@example.com",
+      "photo": "https://placedog.net/400/200?id=1",
+      "createdAt": "2026-01-21T18:07:34.092Z",
+      "userId": "7af5"
+    },
+    {
+      "id": "776b",
+      "chipNumber": "XNM2345",
+      "FindDate": "2026-01-22",
+      "LocationFind": "Χολαργό",
+      "phone": "6971111111",
+      "ownerName": "Γεώργιος Παντελάκης",
+      "petName": "Μπουμπης",
+      "birthDate": "2015-04-06",
+      "Findcomments": "Βρέθηκε σε ένα κάδο.",
+      "streetNumber": "12",
+      "email": "giorgos.pantelakis@example.com",
+      "photo": "https://placedog.net/400/200?id=1",
+      "createdAt": "2026-01-21T18:26:23.526Z",
+      "userId": "0cba"
+    }
+  ],
   "vets": [
     {
       "id": "vet1",
@@ -114,17 +182,22 @@
       "availableAppointments": [
         {
           "id": "1",
-          "time": "2026-01-20T10:00:00",
+          "time": "2026-01-28T10:00:00",
           "status": "available"
         },
         {
           "id": "2",
-          "time": "2026-01-20T14:00:00",
-          "status": "unable"
+          "time": "2026-01-28T14:00:00",
+          "status": "available"
         },
         {
           "id": "3",
-          "time": "2026-01-21T09:00:00",
+          "time": "2026-01-29T09:00:00",
+          "status": "available"
+        },
+        {
+          "id": "4",
+          "time": "2026-01-29T13:30:00",
           "status": "available"
         }
       ]
@@ -140,24 +213,53 @@
       "special": "Δερματολόγος",
       "availableAppointments": [
         {
-          "id": "1",
-          "time": "2026-01-20T11:00:00",
+          "id": "5",
+          "time": "2026-01-30T10:00:00",
           "status": "available"
         },
         {
-          "id": "2",
-          "time": "2026-01-21T13:00:00",
+          "id": "6",
+          "time": "2026-01-30T14:00:00",
           "status": "available"
         },
         {
-          "id": "3",
-          "time": "2026-01-22T10:00:00",
+          "id": "7",
+          "time": "2026-01-31T09:00:00",
           "status": "available"
         }
       ]
     }
   ],
-  "appointments": [],
+  "appointments": [
+    {
+      "id": "78f6",
+      "vetId": "vet1",
+      "userId": "7af5",
+      "appointmentTime": "2026-01-29T09:00:00",
+      "status": "Canceled",
+      "Locations": "Βασιλείου Βουλγαροκτόνου 45, Αγία Παρασκευή, 15343",
+      "fullName": "Γεώργιος Παντελάκης",
+      "petType": "dog",
+      "petName": "",
+      "microchip": "",
+      "message": "Εμβολιασμός",
+      "selectedPetChip": "XNM2345"
+    },
+    {
+      "id": "b6f8",
+      "vetId": "vet1",
+      "userId": "0cba",
+      "appointmentTime": "2026-01-28T10:00:00",
+      "status": "Canceled",
+      "Locations": "Βασιλείου Βουλγαροκτόνου 45, Αγία Παρασκευή, 15343",
+      "fullName": "Γεώργιος Παντελάκης",
+      "petType": "dog",
+      "petName": "",
+      "microchip": "",
+      "message": "Για στείρωση",
+      "selectedPetChip": "XNM2344"
+    }
+  ],
   "comments": [
     {
       "id": "1",
@@ -246,6 +348,14 @@
       "vetid": "vet2",
       "rating": 5,
       "body": "O καλύτερος κτηνίατρος που έχω γνωρίσει. Με άριστη υπομονή και γνώση."
+    },
+    {
+      "id": "9f1c",
+      "userId": "0cba",
+      "userName": "Γεώργιος Παντελάκης",
+      "vetid": "vet2",
+      "rating": 4,
+      "body": "Κάνει αξιόλογη δουλειά!!!"
     }
   ]
 }

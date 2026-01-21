@@ -1,8 +1,7 @@
 import { useNavigate,useParams } from "react-router-dom";
-import { Button,Table,Spinner } from "react-bootstrap";
+import { Button,Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { CIcon } from '@coreui/icons-react'
-import {cilMoodVeryBad,cilMoodBad,cilMeh,cilMoodGood,cilMoodVeryGood,} from '@coreui/icons'
 import Card from "../../modules/Card";
 import { ratingIcons } from "../../modules/IconsConfig";
 import './PetMenu6-2.css'
@@ -53,19 +52,6 @@ function PetMenu6Step2() {
         fetchData();
     }, [vetId]);
 
-        // Add a comment (POST request)
-    const addComment = async (text) => {
-        const newComment = { user: "You", body: text };
-
-        const res = await fetch("http://localhost:3001/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newComment),
-    });
-
-    const savedComment = await res.json();
-        setComments([savedComment, ...comments]); // update local state
-    };
     
     const handleSubmit = async () => {
     

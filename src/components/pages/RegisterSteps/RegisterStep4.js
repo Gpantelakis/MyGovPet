@@ -9,7 +9,7 @@ const RegisterStep4=({ formData,setFormData, onBack,handleConfirm})=> {
     const [error, setError] = useState('');
 
     function handleNext()  {
-    // Έλεγχος αν οι δύο κωδικοί ταιριάζουν
+        setError("")
         const hasUpperCase = /[A-Z]/.test(password);
         const hasNumber = /[0-9]/.test(password);
         const hasSpecialChar = /[!@#$]/.test(password);
@@ -18,22 +18,18 @@ const RegisterStep4=({ formData,setFormData, onBack,handleConfirm})=> {
         if (password !== confirmPassword) {
         setError('');
         setError('Οι κωδικοί δεν ταιριάζουν!');
-        alert(error);
         return;
         }
         if(!(hasUpperCase && hasNumber && hasSpecialChar && hasMinLength)){
             setError('Ο κωδικός πρόσβασης πρέπει να αποτελείται από τουλάχιστον 8 χαρακτήρες και να περιλαμβάνει κεφαλαία γράμματα, αριθμούς και ειδικά σύμβολα (π.χ. !, @, #, $)');
-            alert(error);
             return;
         }
         
 
          const newFormData = { ...formData, password };
 
-        // Στέλνουμε το νέο αντικείμενο στο handleConfirm
         handleConfirm(newFormData);
 
-  // Ενημερώνουμε και το state (προαιρετικό)
         setFormData(newFormData)
     }
 
@@ -56,7 +52,7 @@ const RegisterStep4=({ formData,setFormData, onBack,handleConfirm})=> {
                 value={confirmPassword} 
                 onChange={(e) => setConfirmPassword(e.target.value)} />
             </Form.Group>
-
+            {error &&(<span className="error-text">{error}</span>)}
             <div className="step-buttons">
                 <Button variant="secondary" onClick={onBack}>
                 ΠΙΣΩ

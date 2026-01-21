@@ -197,7 +197,7 @@ function PetMenu5() {
                                     className="appointment-pill"
                                     onClick={() =>
                                             navigate(
-                                            `/petmenu5/appointment/${vet.id}/${encodeURIComponent(appt.time)}`
+                                            `appointment/${vet.id}/${encodeURIComponent(appt.time)}`
                                             )
                                         }
                                     >

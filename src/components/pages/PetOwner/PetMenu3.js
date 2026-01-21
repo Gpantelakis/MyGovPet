@@ -121,7 +121,6 @@ useEffect(() => {
     !FindData.photo
   ) {
     setFormError("Παρακαλώ συμπληρώστε όλα τα στοιχεία");
-    alert(formError)
     return false;
   }
 
@@ -382,7 +381,7 @@ useEffect(() => {
 
         <div className="u-buttons">
           <Button className="no-print" variant="secondary" onClick={() => setPetMenu1step(1)}>Πίσω</Button>
-
+          {formError && <p className="error-text">{formError}</p>}
           <Button variant="success" onClick={() => { if (validateStep2()) {setPetMenu1step(3);}}}>Προεπισκόπηση</Button>
         </div>
       </div>

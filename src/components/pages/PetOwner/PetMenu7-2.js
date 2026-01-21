@@ -1,9 +1,10 @@
 import { useNavigate,useParams } from "react-router-dom";
 import { Button,Table,Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import './PetMenu5-2.css'
 
-function PetMenu5Step2() {
+function PetMenu7Step2() {
     const { vetId, time } = useParams();
     const navigate = useNavigate();
     const decodedTime = decodeURIComponent(time);
@@ -11,10 +12,19 @@ function PetMenu5Step2() {
     const [vet, setVet] = useState(null);
     const [user, setUser] = useState(null);
     const [pet, setPet]= useState(null);
+    const [appoitment, setApp]= useState(null);
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
     const [errors, setErrors] = useState({ fullName: "", message: "" });
+
+    const [isCanceling, setIsCanceling] = useState(false);
+    const [CancelSuccess, setCancelSuccess] = useState(false);
+
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const app = params.get("app") || "";
+    console.log(app)
     
 
     const [formData, setFormData] = useState({
@@ -40,18 +50,23 @@ function PetMenu5Step2() {
         const petData = await petRes.json();
         if (Array.isArray(petData)) {
         setPet(petData);}
+
+        const appRes = await fetch(`http://localhost:3001/appointments/${app}`);
+        const appData = await appRes.json();
+        setApp(appData);
         
 
         if (petData.length > 0) {
             setFormData(prev => ({
                 ...prev,
-                selectedPetChip: petData[0].chipNumber
+                selectedPetChip: appData.selectedPetChip
             }));
         }
 
         setFormData(prev => ({
         ...prev,
-        fullName: `${userData.firstName} ${userData.lastName}`
+        fullName: `${userData.firstName} ${userData.lastName}`,
+        message:appData.message
         }));
         };
 
@@ -60,67 +75,97 @@ function PetMenu5Step2() {
     
     const handleSubmit = async () => {
     
-    const startTime = Date.now();
+        const startTime = Date.now();
 
-    let valid = true;
-    const newErrors = { fullName: "", message: "" };
+        let valid = true;
+        const newErrors = { fullName: "", message: "" };
 
-    if (!formData.fullName.trim()) {
-        newErrors.fullName = "Το ονοματεπώνυμο είναι υποχρεωτικό";
-        valid = false;
-    }
+        if (!formData.fullName.trim()) {
+            newErrors.fullName = "Το ονοματεπώνυμο είναι υποχρεωτικό";
+            valid = false;
+        }
 
-    if (!formData.message.trim()) {
-        newErrors.message = "Το μήνυμα είναι υποχρεωτικό";
-        valid = false;
-    }
+        if (!formData.message.trim()) {
+            newErrors.message = "Το μήνυμα είναι υποχρεωτικό";
+            valid = false;
+        }
 
-    setErrors(newErrors);
+        setErrors(newErrors);
+        
+
+        if (!valid) return;
+        setIsSubmitting(true);
+
+        try {
+        const res = await fetch("http://localhost:3001/appointments/"+ app, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+            message: formData.message,
+            petType: formData.petType,
+            selectedPetChip: formData.selectedPetChip,
+            fullName:formData.fullName
+            })
+        });
+
+        if (!res.ok) throw new Error("Failed to submit appointment");
+
+        const elapsed = Date.now() - startTime;
+        const minDelay = 2000;
+
+        if (elapsed < minDelay) {
+        await new Promise(res => setTimeout(res, minDelay - elapsed));
+        }
+
+        setSubmitSuccess(true);
+        } catch (err) {
+        console.error(err);
+        alert("Κάτι πήγε στραβά κατά την υποβολή!");
+        } finally {
+        setIsSubmitting(false);
+        }
+    };
+
+    const handleCanceled = async () => {
     
+        const startTime = Date.now();
+        setIsCanceling(true)
 
-    if (!valid) return;
-    setIsSubmitting(true);
+        try {
+        const res = await fetch("http://localhost:3001/appointments/"+ app, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                status:"Canceled"
+            })
+        });
 
-    try {
-      const res = await fetch("http://localhost:3001/appointments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          vetId,
-          userId: user.id,
-          appointmentTime: decodedTime,
-          status: "forApproval",
-          Locations:vet.clinicAddress,
-          ...formData
-        })
-      });
+        if (!res.ok) throw new Error("Failed to cancel appointment");
 
-      if (!res.ok) throw new Error("Failed to submit appointment");
+        const elapsed = Date.now() - startTime;
+        const minDelay = 2000;
 
-      const elapsed = Date.now() - startTime;
-      const minDelay = 2000;
+        if (elapsed < minDelay) {
+        await new Promise(res => setTimeout(res, minDelay - elapsed));
+        }
 
-    if (elapsed < minDelay) {
-      await new Promise(res => setTimeout(res, minDelay - elapsed));
-    }
-
-      setSubmitSuccess(true);
-    } catch (err) {
-      console.error(err);
-      alert("Κάτι πήγε στραβά κατά την υποβολή!");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+        setCancelSuccess(true);
+        } catch (err) {
+        console.error(err);
+        alert("Κάτι πήγε στραβά κατά την Ακύρωση!");
+        } finally {
+        setIsCanceling(false);
+        }
+    };
   
 
   return (
     <>
     <div className="PageContainer">
-        <div className="u-step-indicator" style={{padding:0}}>
+        <div className="u-step-indicator">
             <span className="active">Υπηρεσίες Ιδιοκτήτη </span>
-            <span className="active">&gt; Ραντεβού με Κτηνίατρο</span>
-            <span className="active">&gt; Συμπλήρωση στοιχείων και υποβολή</span>
+            <span className="active">&gt; Τα επόμενα ραντεβού σας</span>
+            <span className="active">&gt; Επεξεργασία Ραντεβού</span>
         </div>
         <div style={{ padding:"40px" }}>
             {!vet || !user ? (
@@ -229,7 +274,28 @@ function PetMenu5Step2() {
                         ) : submitSuccess ? (
                             "Καταχωρήθηκε"
                         ) : (
-                            "Υποβολή Αίτησης"
+                            "Υποβολή"
+                        )}
+                        </Button>
+                        <Button variant="danger" onClick={handleCanceled}
+                            disabled={isCanceling || CancelSuccess}
+                        >
+                        {isCanceling ? (
+                            <>
+                            <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                                style={{ marginRight: "8px" }}
+                            />
+                            Ακύρωση...
+                            </>
+                        ) : CancelSuccess ? (
+                            "Ακυρώθηκε"
+                        ) : (
+                            "Ακύρωση"
                         )}
                         </Button>
                     </div>
@@ -251,4 +317,4 @@ function PetMenu5Step2() {
 
 }
 
-export default PetMenu5Step2;
+export default PetMenu7Step2;

@@ -111,6 +111,7 @@ useEffect(() => {
   };
 
   const validateStep2 = () => {
+    setFormError("");
   if (
     !LostData.LostDate ||
     !LostData.LocationLost ||
@@ -120,7 +121,6 @@ useEffect(() => {
     !LostData.photo
   ) {
     setFormError("Παρακαλώ συμπληρώστε όλα τα στοιχεία");
-    alert(formError)
     return false;
   }
 
@@ -132,6 +132,7 @@ useEffect(() => {
   setIsSubmitting(true);
   setSubmitError(false);
   const startTime = Date.now();
+
 
   try {
     const response = await fetch("http://localhost:3001/lostPets", {
@@ -361,10 +362,10 @@ useEffect(() => {
             </Col>
           </Row>
         </div>
-
+        
         <div className="u-buttons">
           <Button className="no-print" variant="secondary" onClick={() => setPetMenu1step(1)}>Πίσω</Button>
-
+          {formError && <p className="error-text">{formError}</p>}
           <Button variant="success" onClick={() => { if (validateStep2()) {setPetMenu1step(3);}}}>Προεπισκόπηση</Button>
         </div>
       </div>

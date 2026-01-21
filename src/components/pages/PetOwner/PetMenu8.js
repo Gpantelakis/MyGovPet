@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Button,Table,Spinner } from "react-bootstrap";
-import './PetMenu7.css'
+import './PetMenu8.css'
 import DeclarationView from "./../../modules/DeclarationsView";
 import { useNavigate } from "react-router-dom";
 
-function PetMenu7({userId}){
+function PetMenu8({userId}){
   // Συνδυάζουμε lost και found σε ένα array για τον πίνακα
     const [loading, setLoading] = useState(true);
     const [filterType, setFilterType] = useState("ALL");
@@ -80,7 +80,7 @@ function PetMenu7({userId}){
 }
 
   const declarations = [
-    ...Appoitments.filter(p => (p.status === "forApproval"||p.status === "Approved")&& new Date(p.appointmentTime)>=Date.now()).map(p => ({
+    ...Appoitments.map(p => ({
       id: p.id,
       appointmentTime: p.appointmentTime,
       Locations: p.Locations,
@@ -117,8 +117,7 @@ function PetMenu7({userId}){
     <>
         <div className="u-step-indicator">
             <span className="active">Υπηρεσίες Ιδιοκτήτη </span>
-            <span className="active">&gt; Τα επόμενα ραντεβού σας</span>
-            <span>&gt; Επεξεργασία Ραντεβού</span>
+            <span className="active">&gt; Ιστορικό των Ραντεβού σας</span>
         </div>
         <div className="pet-menu-history">
             <div style={{ padding: "20px" }}>
@@ -155,13 +154,22 @@ function PetMenu7({userId}){
                 >
                     Εγκεκριμένα
                 </Button>
+                <Button
+                    variant={
+                    filterType === "Canceled"
+                        ? "danger"
+                        : "outline-danger"
+                    }
+                    onClick={() => setFilterType("Canceled")}
+                >
+                    Ακυρωμένα
+                </Button>
                     <input 
                     type="date" 
                     value={dateFrom} 
                     onChange={(e) => setDateFrom(e.target.value)} 
                     placeholder="Από" 
                     className="DateFilter"
-                    min={new Date().toISOString().split("T")[0]}
                     />
                     <input 
                     type="date" 
@@ -169,7 +177,6 @@ function PetMenu7({userId}){
                     onChange={(e) => setDateTo(e.target.value)} 
                     placeholder="Έως" 
                     className="DateFilter"
-                    min={new Date().toISOString().split("T")[0]}
                     />
                 <Button
                     variant={
@@ -192,7 +199,6 @@ function PetMenu7({userId}){
                     <th>Τσιπ Κατοικιδίου</th>
                     <th>Κατάσταση</th>
                     <th>Κτηνίατρος</th>
-                    <th>{null}</th>
                 </tr>
                 </thead>
 
@@ -216,6 +222,8 @@ function PetMenu7({userId}){
                                 <span className="status-approved">Εγκρίθηκε</span>
                             ):d.status === "forApproval" ? (
                                 <span className="status-forapp">Προς Έγκριση</span>
+                            ):d.status === "Canceled" ? (
+                                <span className="status-unknown">Ακυρώθηκε</span>
                             ) : (
                                 <span className="status-unknown">Απορρίφθηκε</span>
                             )
@@ -223,16 +231,6 @@ function PetMenu7({userId}){
                         </td>
                         <td>{d.chipNumber}</td>
                         <td>{d.vetName}</td>
-                        <td>
-                        <Button size="sm" variant="outline-danger"  onClick={() =>
-                                            navigate(
-                                            `appointment/${d.vetId}/${formatDateTime(d.appointmentTime)}?app=${d.id}`
-                                            )
-                                        }
-                                    >
-                            Επεξεργασία Ραντεβού
-                        </Button>
-                        </td>
                     </tr>
                     ))
                 )}
@@ -260,4 +258,4 @@ function PetMenu7({userId}){
   );
 }
 
-export default PetMenu7;
+export default PetMenu8;

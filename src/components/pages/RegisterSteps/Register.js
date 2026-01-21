@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import RegisterStep1 from "../RegisterSteps/RegisterStep1";
 import RegisterStep2 from "../RegisterSteps/RegisterStep2";
 import RegisterStep3 from "../RegisterSteps/RegisterStep3";
@@ -8,7 +7,6 @@ import RegisterStep4 from "../RegisterSteps/RegisterStep4";
 function Register() {
   const [Registerstep, setRegisterStep] = useState(1);
   const [role, setRole] = useState("");
-  const navigate=useNavigate();
 
   const [formData, setFormData] = useState({
   role:"",

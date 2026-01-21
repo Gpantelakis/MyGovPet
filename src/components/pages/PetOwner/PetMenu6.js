@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Table, Spinner,Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import './PetOwner6.css';
+import './PetMenu6.css';
 
 function PetMenu6() {
     const [vets, setVets] = useState([]);
@@ -157,7 +157,7 @@ function PetMenu6() {
                             variant="success"
                             onClick={() =>
                                                 navigate(
-                                                `/petmenu6/Overview/${vet.id}`
+                                                `overview/${vet.id}`
                                                 )
                                             }>
                         Επισκόπηση
