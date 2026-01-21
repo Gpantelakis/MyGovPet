@@ -14,21 +14,6 @@
       "postalCode": "15343",
       "email": "giorgos.chania63@gmail.com",
       "password": "Giorgos2001!"
-    },
-    {
-      "id": "0cba",
-      "role": 1,
-      "firstName": "Γεώργιος",
-      "lastName": "Παντελάκης",
-      "phone": "6971111111",
-      "afm": "765432",
-      "gender": "Άνδρας",
-      "studies": "",
-      "street": "Βασιλείου Βουλγαροκτόνου",
-      "streetNumber": "12",
-      "postalCode": "15343",
-      "email": "giorgos.pantelakis@example.com",
-      "password": "Dit2026!"
     }
   ],
   "pets": [
