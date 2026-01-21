@@ -133,3 +133,18 @@ form {
   border-radius: 8px;
   
 }
+
+.rating-icon {
+  cursor: pointer;
+  color: #adb5bd;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.rating-icon:hover {
+  transform: scale(1.3);
+  color: var(--icon-color);
+}
+
+.rating-icon.active {
+  color: var(--icon-color);
+}

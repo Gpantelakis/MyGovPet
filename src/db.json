@@ -1,21 +1,6 @@
 {
   "users": [
     {
-      "id": "55d8",
-      "role": 1,
-      "firstName": "GEORGIOS",
-      "lastName": "PANTELAKIS",
-      "phone": "6973453310",
-      "afm": "765432",
-      "gender": "Άνδρας",
-      "studies": "",
-      "street": "Βασιλείου Βουλγαροκτόνου",
-      "streetNumber": "12",
-      "postalCode": "15343",
-      "email": "giorgos.pantelakis@example.com",
-      "password": "Dit2026!"
-    },
-    {
       "id": "f3b5",
       "role": 1,
       "firstName": "GEORGIOS",
@@ -29,6 +14,21 @@
       "postalCode": "15343",
       "email": "giorgos.chania63@gmail.com",
       "password": "Giorgos2001!"
+    },
+    {
+      "id": "7af5",
+      "role": 1,
+      "firstName": "Γεώργιος",
+      "lastName": "Παντελάκης",
+      "phone": "6971111111",
+      "afm": "765432",
+      "gender": "Άνδρας",
+      "studies": "",
+      "street": "Βασιλείου Βουλγαροκτόνου",
+      "streetNumber": "12",
+      "postalCode": "15343",
+      "email": "giorgos.pantelakis@example.com",
+      "password": "Dit2026!"
     }
   ],
   "pets": [
@@ -99,43 +99,8 @@
       ]
     }
   ],
-  "lostPets": [
-    {
-      "id": "fec3",
-      "chipNumber": "XNM2345",
-      "LostDate": "2026-01-15",
-      "LocationLost": "Αγία Παρασκευή",
-      "phone": "6973453310",
-      "ownerName": "GEORGIOS PANTELAKIS",
-      "petName": "Μπουμπης",
-      "birthDate": "2015-04-06",
-      "Lostcomments": "Φοράει κοκκινο κωλάρο και γράφει το όνομα του.",
-      "streetNumber": "12",
-      "email": "giorgos.chania@hotmail.com",
-      "photo": "https://placedog.net/400/200?id=1",
-      "createdAt": "2026-01-16T19:00:31.864Z",
-      "userId": "55d8",
-      "status": "inactive"
-    }
-  ],
-  "FindPets": [
-    {
-      "id": "84be",
-      "chipNumber": "XNM2345",
-      "FindDate": "2026-01-16",
-      "LocationFind": "Χολαργό",
-      "phone": "6973453310",
-      "ownerName": "GEORGIOS PANTELAKIS",
-      "petName": "Μπουμπης",
-      "birthDate": "2015-04-06",
-      "Findcomments": "Το βρήκαμε σε ένα καταφύγιο σκύλων.",
-      "streetNumber": "12",
-      "email": "giorgos.chania@hotmail.com",
-      "photo": "https://placedog.net/400/200?id=1",
-      "createdAt": "2026-01-16T19:01:13.321Z",
-      "userId": "55d8"
-    }
-  ],
+  "lostPets": [],
+  "FindPets": [],
   "vets": [
     {
       "id": "vet1",
@@ -148,17 +113,17 @@
       "special": "Χειρούργος",
       "availableAppointments": [
         {
-          "id":"1",
+          "id": "1",
           "time": "2026-01-20T10:00:00",
           "status": "available"
         },
         {
-          "id":"2",
+          "id": "2",
           "time": "2026-01-20T14:00:00",
           "status": "unable"
         },
         {
-          "id":"3",
+          "id": "3",
           "time": "2026-01-21T09:00:00",
           "status": "available"
         }
@@ -175,24 +140,112 @@
       "special": "Δερματολόγος",
       "availableAppointments": [
         {
-          "id":"1",
+          "id": "1",
           "time": "2026-01-20T11:00:00",
           "status": "available"
         },
         {
-          "id":"2",
+          "id": "2",
           "time": "2026-01-21T13:00:00",
           "status": "available"
         },
         {
-          "id":"3",
+          "id": "3",
           "time": "2026-01-22T10:00:00",
           "status": "available"
         }
       ]
     }
   ],
-  "appointments": [
-    
+  "appointments": [],
+  "comments": [
+    {
+      "id": "1",
+      "userid": "7af5",
+      "userName": "Γεώργιος Παντελάκης",
+      "vetid": "vet1",
+      "rating": 5,
+      "body": "Εξαιρετικός κτηνίατρος. Μας έκανε να νιώσουμε άνετα από την πρώτη στιγμή και φρόντισε το κατοικίδιό μας με αγάπη."
+    },
+    {
+      "id": "2",
+      "userid": "a912",
+      "userName": "Μαρία Κωνσταντίνου",
+      "vetid": "vet1",
+      "rating": 4,
+      "body": "Πολύ καλή εμπειρία. Ο γιατρός ήταν επαγγελματίας και πρόθυμος να απαντήσει σε ερωτήσεις."
+    },
+    {
+      "id": "3",
+      "userid": "b441",
+      "userName": "Νίκος Παπαδόπουλος",
+      "vetid": "vet1",
+      "rating": 3,
+      "body": "Η εξέταση ήταν σωστή αλλά η αναμονή ήταν αρκετά μεγάλη."
+    },
+    {
+      "id": "4",
+      "userid": "c883",
+      "userName": "Ελένη Μανωλά",
+      "vetid": "vet2",
+      "rating": 5,
+      "body": "Καταπληκτική εμπειρία! Ο κτηνίατρος έδειξε πραγματικό ενδιαφέρον για το ζώο μας."
+    },
+    {
+      "id": "5",
+      "userid": "d210",
+      "userName": "Κώστας Δημητρίου",
+      "vetid": "vet2",
+      "rating": 2,
+      "body": "Δεν έμεινα ιδιαίτερα ικανοποιημένος. Η επίσκεψη ήταν γρήγορη και χωρίς πολλές εξηγήσεις."
+    },
+    {
+      "id": "6",
+      "userid": "e557",
+      "userName": "Αναστασία Λυμπέρη",
+      "vetid": "vet2",
+      "rating": 1,
+      "body": "Δυστυχώς δεν είχα καλή εμπειρία. Δεν υπήρξε σωστή επικοινωνία και ένιωσα βιασύνη."
+    },
+    {
+      "id": "7",
+      "userid": "f901",
+      "userName": "Δημήτρης Σαμαράς",
+      "vetid": "vet1",
+      "rating": 4,
+      "body": "Καλή εξυπηρέτηση και ευγενικό προσωπικό. Ο γιατρός ήταν αναλυτικός και μας ενέπνευσε εμπιστοσύνη."
+    },
+    {
+      "id": "8",
+      "userid": "g332",
+      "userName": "Ιωάννα Θεοδωρίδου",
+      "vetid": "vet2",
+      "rating": 5,
+      "body": "Άριστος επαγγελματίας! Αντιμετώπισε το πρόβλημα του κατοικιδίου μας άμεσα και αποτελεσματικά."
+    },
+    {
+      "id": "9",
+      "userid": "h774",
+      "userName": "Σπύρος Καρράς",
+      "vetid": "vet1",
+      "rating": 2,
+      "body": "Η εμπειρία ήταν μέτρια. Περίμενα περισσότερη προσοχή και καλύτερη επικοινωνία."
+    },
+    {
+      "id": "10",
+      "userid": "j615",
+      "userName": "Κατερίνα Αντωνίου",
+      "vetid": "vet2",
+      "rating": 3,
+      "body": "Ο γιατρός ήταν ευγενικός αλλά η επίσκεψη κράτησε λιγότερο απ’ όσο περίμενα."
+    },
+    {
+      "id": "2261",
+      "userId": "7af5",
+      "userName": "Γεώργιος Παντελάκης",
+      "vetid": "vet2",
+      "rating": 5,
+      "body": "O καλύτερος κτηνίατρος που έχω γνωρίσει. Με άριστη υπομονή και γνώση."
+    }
   ]
 }

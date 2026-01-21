@@ -5,6 +5,7 @@ import Register from "./components/pages/RegisterSteps/Register.js";
 import PetOwnerMenu from "./components/pages/PetOwner/PetOwnerMenu.js";
 import ServicePage from "./components/pages/PetOwner/services.js";
 import PetMenu52 from "./components/pages/PetOwner/PetMenu5-2";
+import PetMenu62 from "./components/pages/PetOwner/PetMenu6-2";
 
 
 
@@ -24,7 +25,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/PetOwnerMenu" element={<PetOwnerMenu />} />
             <Route path="/PetOwnerMenu/service/:id" element={<ServicePage />} />
-            <Route path="/petmenu5/appointment/:vetId/:time" element={<PetMenu52 />}
+            <Route path="/petmenu5/appointment/:vetId/:time" element={<PetMenu52 />}/>
+            <Route path="/petmenu6/overview/:vetId" element={<PetMenu62 />}
 />
           </Routes>
         </div>

@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { Table, Spinner,Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import './PetMenu5.css';
+import './PetOwner6.css';
 
-function PetMenu5() {
+function PetMenu6() {
     const [vets, setVets] = useState([]);
     const [loading, setLoading] = useState(true);
     const [filters, setFilters] = useState({
     area: "",
     fromDate: "",
     toDate: "",
-    specialty: ""
+    specialty: "",
+    vetname:""
         });
     const startOfDay = (dateStr) =>
     new Date(`${dateStr}T00:00:00`);
@@ -24,9 +25,6 @@ function PetMenu5() {
     const areas = [...new Set(vets.map(v => v.clinicAddress?.split(",")[1]?.trim()).filter(Boolean))];
     const specialties = [...new Set(vets.map(v => v.special).filter(Boolean))];
     
-    const [selectedAppointment, setSelectedAppointment] = useState(null);
-    const [showForm, setShowForm] = useState(false);
-
   useEffect(() => {
     const fetchVets = async () => {
       try {
@@ -43,21 +41,11 @@ function PetMenu5() {
     fetchVets();
   }, []);
 
-  const formatDateTime = (dtString) => {
-    if (!dtString) return "-";
-    const options = { 
-      year: 'numeric', month: '2-digit', day: '2-digit',
-      hour: '2-digit', minute: '2-digit'
-    };
-    return new Date(dtString).toLocaleString("el-GR", options);
-  };
-
-  if (loading) return (
-    <div style={{ textAlign: "center", padding: "30px" }}>
-      <Spinner animation="border" />
-      <p>Φόρτωση κτηνιάτρων...</p>
-    </div>
-  );
+  const normalize = (str) =>
+  str
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 
   const filteredVets = vets.filter(vet => {
         if (filters.area && !vet.clinicAddress.includes(filters.area)) {
@@ -84,7 +72,15 @@ function PetMenu5() {
             });
 
             if (!hasValidAppointment) return false;
-}
+        }
+        if (filters.vetname) {
+            const fullName = normalize(`${vet.firstName} ${vet.lastName}`);
+            const search = normalize(filters.vetname);
+
+            if (!fullName.includes(search)) {
+                return false;
+            }
+            }
 
 
         return true;
@@ -96,10 +92,10 @@ function PetMenu5() {
     <div className="pet-menu-vets" >
         <div className="u-step-indicator">
             <span className="active">Υπηρεσίες Ιδιοκτήτη </span>
-            <span className="active">&gt; Ραντεβού με Κτηνίατρο</span>
-            <span>&gt; Συμπλήρωση στοιχείων και υποβολή</span>
+            <span className="active">&gt; Αναζήτηση Κτηνιάτρου</span>
+            <span>&gt; Επισκόπηση και Υποβολή Αξιολογήσεων</span>
         </div>
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>ΔΙΑΘΕΣΙΜΟΙ ΚΤΗΝΙΑΤΡΟΙ</h2>
+      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>ΚΤΗΝΙΑΤΡΟΙ</h2>
         <div className="filters">
             <select
                 value={filters.area}
@@ -111,18 +107,6 @@ function PetMenu5() {
                 ))}
             </select>
 
-            <input
-                type="date"
-                value={filters.fromDate}
-                onChange={e => setFilters({ ...filters, fromDate: e.target.value })}
-            />
-
-            <input
-                type="date"
-                value={filters.toDate}
-                onChange={e => setFilters({ ...filters, toDate: e.target.value })}
-            />
-
             <select
                 value={filters.specialty}
                 onChange={e => setFilters({ ...filters, specialty: e.target.value })}
@@ -132,9 +116,13 @@ function PetMenu5() {
                 <option key={i} value={s}>{s}</option>
                 ))}
             </select>
+
+            <input placeholder="Όνομα κτηνιάτρου" value={filters.vetname} onChange={e => setFilters({ ...filters, vetname: e.target.value })}>
+            </input>
+
             <Button
                 variant="secondary"
-                onClick={() => setFilters({ area: "", fromDate: "", toDate: "", specialty: "" })}
+                onClick={() => setFilters({ area: "", fromDate: "", toDate: "", specialty: "",vetname:"" })}
                 style={{ marginLeft: "10px" }}
                 >
                 Καθαρισμός φίλτρων
@@ -143,12 +131,6 @@ function PetMenu5() {
 
       <div className="vets-table">
         <Table bordered hover responsive>
-            <thead style={{ background: "#f1f1f1" }}>
-            <tr>
-                <th>Κτηνίατρος</th>
-                <th>Διαθέσιμα Ραντεβού</th>
-            </tr>
-            </thead>
             <tbody>
             {vets.length === 0 ? (
                 <tr>
@@ -170,43 +152,16 @@ function PetMenu5() {
                         {vet.clinicAddress}
                     </a>
                     </td>
-                    <td style={{ verticalAlign: "top" }}>
-                        
-                        {(() => {
-                            const from = filters.fromDate ? startOfDay(filters.fromDate) : null;
-                            const to = filters.toDate ? endOfDay(filters.toDate) : null;
-
-                            const visibleAppointments = vet.availableAppointments
-                            ?.filter(a => a.status === "available")
-                            .filter(a => {
-                                const d = new Date(a.time);
-                                if (from && d < from) return false;
-                                if (to && d > to) return false;
-                                return true;
-                            }) || [];
-                            if (visibleAppointments.length === 0) {
-                            return <span>Δεν υπάρχουν διαθέσιμα ραντεβού</span>;
-                            }
-
-                            return (
-                            <div className="appointments">
-                                {visibleAppointments.map((appt, i) => (
-                                <Button
-                                    key={i}
-                                    variant="success"
-                                    className="appointment-pill"
-                                    onClick={() =>
-                                            navigate(
-                                            `/petmenu5/appointment/${vet.id}/${encodeURIComponent(appt.time)}`
-                                            )
-                                        }
-                                    >
-                                    {formatDateTime(appt.time)}
-                                </Button>
-                                ))}
-                            </div>
-                            );
-                        })()}
+                    <td >
+                        <Button className="overview-Button" 
+                            variant="success"
+                            onClick={() =>
+                                                navigate(
+                                                `/petmenu6/Overview/${vet.id}`
+                                                )
+                                            }>
+                        Επισκόπηση
+                        </Button>
                     </td>
                 </tr>
                 ))
@@ -229,4 +184,4 @@ function PetMenu5() {
   );
 }
 
-export default PetMenu5;
+export default PetMenu6;

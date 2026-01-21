@@ -4,6 +4,7 @@ import PetMenu2 from "../PetOwner/PetMenu2"
 import PetMenu3 from "../PetOwner/PetMenu3"
 import PetMenu4 from "../PetOwner/PetMenu4"
 import PetMenu5 from "../PetOwner/PetMenu5"
+import PetMenu6 from "../PetOwner/PetOwner6"
 import LoginModal from "../Login";
 import { useState,useEffect } from "react";
 
@@ -59,6 +60,9 @@ function ServicePage() {
     }
     if (id === "5") {
       return <PetMenu5/>;
+    }
+    if (id === "6") {
+      return <PetMenu6/>;
     }
   }else{
     

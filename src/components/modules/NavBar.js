@@ -35,7 +35,7 @@ function NavBar() {
               <NavDropdown.Item onClick={() => navigate("/PetOwnerMenu/service/3")}>Δήλωση εύρεσης κατοικιδίου</NavDropdown.Item>
               <NavDropdown.Item onClick={() => navigate("/PetOwnerMenu/service/4")}>Ιστορικό Δηλώσεων</NavDropdown.Item>
               <NavDropdown.Item onClick={() => navigate("/PetOwnerMenu/service/5")}>Ραντεβού με κτηνίατρο</NavDropdown.Item>
-              <NavDropdown.Item href="#rate_vet">Αναζήτηση και Αξιολόγηση Κτηνιάτρου</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate("/PetOwnerMenu/service/6")}>Αναζήτηση και Αξιολόγηση Κτηνιάτρου</NavDropdown.Item>
               <NavDropdown.Item href="#cancelAp">Ακύρωση Ραντεβού με κτηνίατρο</NavDropdown.Item>
               <NavDropdown.Item href="#HistoryAp">Ιστορικό των Ραντεβού</NavDropdown.Item>
 

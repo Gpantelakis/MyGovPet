@@ -76,7 +76,7 @@ function LoginModal({ show, handleClose }) {
             </div>
 
             <div className="loginGuest">
-              <a href='/guest'> Συνέχισε χωρίς εγγραφή(Αναζήτηση/Δήλωση απώλεσθέντος κατοικδίου) 
+              <a href='/Home'> Συνέχισε χωρίς εγγραφή(Αναζήτηση/Δήλωση απώλεσθέντος κατοικδίου) 
               </a>
             </div>
         </Form>
