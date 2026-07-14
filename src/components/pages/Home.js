@@ -1,6 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+import { 
+  FaFacebookF, 
+  FaInstagram, 
+  FaYoutube, 
+  FaLinkedinIn 
+} from "react-icons/fa";
+
+import { FaXTwitter } from "react-icons/fa6";
 
 
 
@@ -47,15 +55,12 @@ const Home = () => {
       </section>
       {/* FOOTER */}
       <footer className="footer">
-        <div className="social">
-          <h4>Social Networks</h4>
-          <div className="icons">
-            <span>FB</span>
-            <span>IG</span>
-            <span>X</span>
-            <span>YT</span>
-            <span>IN</span>
-          </div>
+        <div className="icons">
+          <span><FaFacebookF /></span>
+          <span><FaInstagram /></span>
+          <span><FaXTwitter /></span>
+          <span><FaYoutube /></span>
+          <span><FaLinkedinIn /></span>
         </div>
 
         <div className="contact">

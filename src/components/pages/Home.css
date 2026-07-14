@@ -107,3 +107,18 @@
 .contact p {
   margin: 5px 0;
 }
+
+.icons {
+  display: flex;
+  gap: 20px;
+}
+
+.icons span {
+  font-size: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icons span:hover {
+  transform: scale(1.2);
+}
